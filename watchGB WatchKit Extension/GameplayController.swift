@@ -1,0 +1,240 @@
+//
+//  GameplayController.swift
+//  watchGB
+//
+//  Created by Gabriel O'Flaherty-Chan on 2017-02-25.
+//  Copyright © 2017 Gabrieloc. All rights reserved.
+//
+
+import WatchKit
+import Gambatte_watchOS
+
+extension CGPoint {
+	static func -(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
+		return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+	}
+}
+
+class GameplayController: WKInterfaceController {
+	@IBOutlet var image: WKInterfaceImage!
+	
+	var panOrigin: CGPoint?
+	let deadzone: CGFloat = 1
+	
+	@IBAction func tapUpdated(_ sender: WKTapGestureRecognizer) {
+		pressInputOnce(.A)
+	}
+	
+	@IBAction func panUpdated(_ sender: WKPanGestureRecognizer) {
+		
+		let direction = sender.translationInObject()
+		
+		switch sender.state {
+		case .began:
+			panOrigin = direction
+		case .changed:
+			if self.panOrigin == nil {
+				self.panOrigin = direction
+			}
+			let panOrigin = self.panOrigin!
+			let delta = direction - panOrigin
+			
+			if delta == .zero {
+				return
+			}
+			
+			if abs(delta.x) > abs(delta.y) {
+				toggleInput = delta.x.sign == .plus ? .right : .left
+			} else {
+				toggleInput = delta.y.sign == .plus ? .down : .up
+			}
+		default:
+			panOrigin = nil
+			toggleInput = nil
+		}
+	}
+
+	@IBAction func startSelected()	{ pressInputOnce(.start) }
+	@IBAction func selectSelected() { pressInputOnce(.select) }
+	@IBAction func BSelected()		{ pressInputOnce(.B) }
+	
+	@IBAction func resetSelected() {
+		core?.resetEmulation()
+	}
+	
+	@IBOutlet var ALabel: WKInterfaceLabel!
+	@IBOutlet var DPadLabel: WKInterfaceLabel!
+	
+	var imageCache = NSCache<NSString, UIImage>()
+	
+	func updateDirectionalInputs() {
+
+		guard let core = core else {
+			DPadLabel.setText(GameInput(rawValue: 0).displaySymbol)
+			return
+		}
+		
+		let input = core.activeInput.pointee
+		let directionInput = GameInput(rawValue: Int(input))
+
+		// This takes up too much cpu :(
+//		let image = inputImage(for: directionInput)
+//		dpadImage.setImage(image)
+		
+		// This is a far cheaper alternative
+		let text = directionInput.displaySymbol
+		DPadLabel.setText(text)
+	}
+	
+	func inputImage(for input: GameInput) -> UIImage? {
+		
+		let key = NSString(string: "Dpad-\(input.rawValue)")
+		if let image = imageCache.object(forKey: key) {
+			return image
+		}
+		
+		guard let image = UIImage.dpadImage(for: input) else {
+			return nil
+		}
+		imageCache.setObject(image, forKey: key)
+		return image
+	}
+	
+	let loader = GameLoader.shared
+	var core: GameCore? {
+		didSet {
+			if let core = core {
+				core.didRender = { [weak self] buffer in
+					guard let s = self else {
+						return
+					}
+					s.updateSnapshotIfNeeded(with: buffer)
+				}
+			}
+		}
+	}
+	
+	var tick = 0
+	let refreshRate = 20;
+	
+	override func awake(withContext context: Any?) {
+		super.awake(withContext: context)
+		
+		guard let game = context as? Game else {
+			pop()
+			return
+		}
+		
+		loader.loadGame(game, { [unowned self] (core) in
+			self.core = core
+		}) { (error) in
+			print("error loading game \(error)")
+		}
+		
+		(GameInput.directionalInputs + [GameInput.A]).forEach {
+			self.setInputSelected($0, selected: false)
+		}
+	}
+	
+	override func didAppear() {
+		super.didAppear()
+		
+		if let core = core {
+			core.startEmulation()
+			core.load(fromSlot: 0)
+		}
+		
+		crownSequencer.delegate = self
+		crownSequencer.focus()
+	}
+	
+	override func didDeactivate() {
+		super.didDeactivate()
+		
+		if let core = core {
+			core.save(toSlot: 0)
+			core.stopEmulation()
+		}
+		
+		crownSequencer.delegate = nil
+		crownSequencer.resignFocus()
+	}
+	
+	var lastSnapshot: UIImage?
+	
+	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
+		
+		tick += 1
+		if tick > refreshRate || core == nil {
+			return
+		}
+		
+		let snapshot = core!.createSnapshot(from: buffer)
+		
+		// compare before updating. Not sure if faster.
+//		if let lhs = lastSnapshot, let rhs = snapshot, lhs.equalPixels(to: rhs) {
+//			return
+//		}
+//		lastSnapshot = snapshot
+		
+		self.image.setImage(snapshot)
+		tick = 0
+	}
+	
+	// MARK: Input
+	
+	var toggleInput: GameInput? {
+		
+		didSet {
+			if let oldInput = oldValue {
+				setInputSelected(oldInput, selected: false)
+			}
+			if let newInput = toggleInput {
+				setInputSelected(newInput, selected: true)
+			}
+		}
+	}
+	
+	func setInputSelected(_ input: GameInput, selected: Bool) {
+		
+		if let core = core {
+			core.update(input, selected: selected)
+		}
+		
+		if input.isDirectional {
+			updateDirectionalInputs()
+		} else if input == .A {
+			let alpha: CGFloat = selected ? 1.0 : 0.5
+			ALabel.setAlpha(alpha)
+		}
+	}
+	
+	var inputTimers = [GameInput: Timer]()
+	
+	func pressInputOnce(_ input: GameInput) {
+		setInputSelected(input, selected: true)
+		if let timer = inputTimers.first(where: { $0.key == input })?.value {
+			timer.invalidate()
+		}
+		let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] (_) in
+			guard let s = self else { return }
+			s.setInputSelected(input, selected: false)
+		}
+		inputTimers[input] = timer
+	}
+}
+
+extension GameplayController: WKCrownDelegate {
+	
+	func crownDidBecomeIdle(_ crownSequencer: WKCrownSequencer?) {
+		toggleInput = nil
+	}
+	
+	func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
+		if rotationalDelta == 0 {
+			return
+		}
+		let input: GameInput = rotationalDelta > 0 ? .up : .down
+		toggleInput = input
+	}
+}

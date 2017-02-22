@@ -1,15 +1,138 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--GamePlay-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="GamePlay" id="AgC-eL-Hgc" customClass="GameplayController" customModule="watchGB_WatchKit_Extension">
+                    <items>
+                        <imageView width="1" height="0.80000000000000004" alignment="left" image="loading" contentMode="scaleAspectFill" id="aJl-Oj-bNg">
+                            <gestureRecognizers>
+                                <panGestureRecognizer id="0MQ-NG-tvP">
+                                    <connections>
+                                        <action selector="panUpdated:" destination="AgC-eL-Hgc" id="CA6-VH-l1R"/>
+                                    </connections>
+                                </panGestureRecognizer>
+                                <tapGestureRecognizer id="eXU-ai-JEc">
+                                    <connections>
+                                        <action selector="tapUpdated:" destination="AgC-eL-Hgc" id="qqH-hx-H41"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </imageView>
+                        <group width="1" height="0.20000000000000001" alignment="left" id="OfT-pQ-dwT">
+                            <items>
+                                <group width="0.10000000000000001" height="1" alignment="left" layout="vertical" spacing="0.0" id="jHt-DP-AmP">
+                                    <items>
+                                        <label width="1" height="0.5" alignment="left" text="▶︎" textAlignment="center" id="cVh-ps-Gkz" userLabel="DPadLabel">
+                                            <fontDescription key="font" type="system" weight="heavy" pointSize="11"/>
+                                        </label>
+                                        <label width="1" height="0.5" alignment="left" text="A" textAlignment="center" id="e8e-tB-5Zv">
+                                            <fontDescription key="font" type="system" weight="heavy" pointSize="11"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <button width="0.20000000000000001" height="1" alignment="left" id="78O-Gs-JrD">
+                                    <string key="title">
+ST</string>
+                                    <fontDescription key="font" type="system" weight="black" pointSize="10"/>
+                                    <connections>
+                                        <action selector="startSelected" destination="AgC-eL-Hgc" id="p7L-NL-aSW"/>
+                                    </connections>
+                                </button>
+                                <button width="0.20000000000000001" height="1" alignment="left" id="gEn-fs-8B5">
+                                    <string key="title">
+SL</string>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" type="system" weight="black" pointSize="10"/>
+                                    <connections>
+                                        <action selector="selectSelected" destination="AgC-eL-Hgc" id="J5E-nW-oyX"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="B" id="5MX-Ax-alr">
+                                    <fontDescription key="font" type="system" weight="black" pointSize="20"/>
+                                    <connections>
+                                        <action selector="BSelected" destination="AgC-eL-Hgc" id="Fot-BT-0Rl"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="nn1-cq-hAR">
+                        <items>
+                            <menuItem title="Reset" icon="repeat" id="JZ8-a9-1cp">
+                                <connections>
+                                    <action selector="resetSelected" destination="AgC-eL-Hgc" id="ZNK-Kz-hgl"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="ALabel" destination="e8e-tB-5Zv" id="gmP-Xj-kCc"/>
+                        <outlet property="DPadLabel" destination="cVh-ps-Gkz" id="oed-H8-hIw"/>
+                        <outlet property="image" destination="aJl-Oj-bNg" id="AY5-GI-9Ll"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="286" y="276"/>
+        </scene>
+        <!--Library Controller-->
+        <scene sceneID="hYo-3W-FtS">
+            <objects>
+                <controller id="7hZ-R3-GZe" customClass="LibraryController" customModule="watchGB_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Iw1-TF-n5i">
+                            <items>
+                                <tableRow identifier="Header" selectable="NO" id="VmW-Kc-a7M">
+                                    <group key="rootItem" width="1" height="70" alignment="left" id="UUj-Ke-CHi">
+                                        <items>
+                                            <imageView width="1" height="1" alignment="left" image="gio" contentMode="scaleAspectFill" id="XQp-ay-rpc"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.9993709921836853" green="0.14531728625297546" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </group>
+                                </tableRow>
+                                <tableRow identifier="Info" selectable="NO" id="fwh-2v-kWc" customClass="InfoRow" customModule="watchGB_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="0.0" id="bli-7y-Vdh">
+                                        <items>
+                                            <label width="1" alignment="left" text="Info" textAlignment="left" numberOfLines="0" id="bZ1-on-mww">
+                                                <color key="textColor" red="0.99937099220000003" green="0.14531728629999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="titleLabel" destination="bZ1-on-mww" id="AfP-hb-mJe"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="GameRow" id="fFq-Ha-OSs" customClass="GameRow" customModule="watchGB_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="PWx-CH-ukM">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Pokemon - Yellow Version (UE)" textAlignment="left" numberOfLines="0" id="NDJ-HY-IOo">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="titleLabel" destination="NDJ-HY-IOo" id="C04-0a-hT1"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="Iw1-TF-n5i" id="sw8-ie-RA9"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="62" y="276"/>
         </scene>
     </scenes>
 </document>

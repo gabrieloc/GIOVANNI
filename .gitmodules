@@ -1,0 +1,3 @@
+[submodule "gambatte"]
+	path = gambatte
+	url = git@github.com:sinamas/gambatte.git
