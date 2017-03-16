@@ -1,3 +1,4 @@
+![GIOVANNI GAMEPLAY](gameplay.gif)
 ![GIOVANNI](banner.png)
 
 **A Gameboy Emulator for the Apple Watch.**
@@ -24,12 +25,12 @@ The control scheme is as follows:
 
 Disclaimer: Due to the constraints of watchOS, you may experience crashes or graphical glitches. Keep in mind that this project likely does not align with what Apple expects from the platform, which in turn makes it difficult to optimize and debug.
 
-###Games don't show up
+### Games don't show up
 Because Giovanni relies on your iPhone for transferring games, ensure your paired iPhone is on and within reach.
 
-###Garbled pixels
+### Garbled pixels
 Video memory often gets corrupt, in which case you will have to force emulation to be reset. While in-game, force touch the screen and select Reset. If the app closes after that, you will have to re-open, and repeat the process until it works.
 
-###Colors wrong
+### Colors wrong
 Some games appear to format pixel data differently. The rendering work is done in [GameCoreSnapshots.swift](https://github.com/gabrieloc/GIOVANNI/blob/master/gambatte_watchOS/GameCoreSnapshots.swift), you may have luck adjusting how the Core Graphics context is created.
 
