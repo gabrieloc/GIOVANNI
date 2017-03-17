@@ -37,6 +37,14 @@ class InfoRow: NSObject {
 	
 	static let type = "Info"
 	@IBOutlet var titleLabel: WKInterfaceLabel!
+	@IBOutlet var refreshButton: WKInterfaceButton!
+	
+	var refreshHandler: (() -> Void)?
+	
+	@IBAction func refreshSelected() {
+		refreshHandler?()
+	}
+	
 }
 
 class GameRow: NSObject {

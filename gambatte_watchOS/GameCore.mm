@@ -98,6 +98,7 @@ public:
 
 - (void)startEmulation
 {
+	// Using a Timer instead to trigger the game loop is slower, but ensures all frames are rendered
 //	NSTimeInterval interval = 1 / (frameInterval * 0.5);
 //	updateTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(runGameLoop) userInfo:nil repeats:YES];
 

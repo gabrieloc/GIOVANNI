@@ -99,16 +99,23 @@ SL</string>
                                     </group>
                                 </tableRow>
                                 <tableRow identifier="Info" selectable="NO" id="fwh-2v-kWc" customClass="InfoRow" customModule="giovanni_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="0.0" id="bli-7y-Vdh">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="bli-7y-Vdh">
                                         <items>
-                                            <label width="1" alignment="left" text="Loading" textAlignment="left" numberOfLines="0" id="bZ1-on-mww">
+                                            <button width="1" alignment="left" title=" Refresh" id="Iva-T0-34J">
+                                                <connections>
+                                                    <action selector="refreshSelected" destination="fwh-2v-kWc" id="nUw-BO-XLM"/>
+                                                </connections>
+                                            </button>
+                                            <label width="0.90000000000000002" alignment="center" text="Loading" textAlignment="left" numberOfLines="0" id="bZ1-on-mww">
                                                 <color key="textColor" red="0.99937099220000003" green="0.14531728629999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                             </label>
                                         </items>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                     </group>
                                     <connections>
+                                        <outlet property="refreshButton" destination="Iva-T0-34J" id="8UN-S5-ShT"/>
                                         <outlet property="titleLabel" destination="bZ1-on-mww" id="AfP-hb-mJe"/>
                                     </connections>
                                 </tableRow>
@@ -132,7 +139,7 @@ SL</string>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="62" y="276"/>
+            <point key="canvasLocation" x="61.897435897435905" y="268.51282051282055"/>
         </scene>
     </scenes>
 </document>

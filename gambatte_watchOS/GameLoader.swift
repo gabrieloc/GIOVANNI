@@ -92,10 +92,13 @@ public class GameLoader: NSObject {
 	
 	func activate(_ completion: @escaping ((Error?) -> Void)) {
 		
-		activationCompletion = completion
 		session.delegate = self
 		if session.activationState != .activated {
+			activationCompletion = completion
 			session.activate()
+		} else {
+			activationCompletion = nil
+			completion(nil)
 		}
 	}
 	

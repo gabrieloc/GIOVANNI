@@ -56,6 +56,7 @@ class LibraryController: WKInterfaceController {
 	override func willActivate() {
 		super.willActivate()
 
+		// Auto-loads the last played game
 //		if let game = UserDefaults.standard.lastPlayed {
 //			presentGame(game)
 //		}
@@ -63,6 +64,7 @@ class LibraryController: WKInterfaceController {
 	
 	func reloadGames() {
 		
+		noGamesFound = false
 		populateTable(with: [])
 		
 		let success: (([Game]) -> Void) = { [unowned self] games in
@@ -72,6 +74,7 @@ class LibraryController: WKInterfaceController {
 		
 		let failure: ((Error) -> Void) = {
 			[unowned self] (error) in
+			self.noGamesFound = true
 			self.presentAlert(withTitle: "Couldn't Reload Games", message: error.localizedDescription, preferredStyle: .alert, actions: [
 				WKAlertAction(title: "Retry", style: .default, handler: { [unowned self] in self.reloadGames() }),
 				WKAlertAction(title: "Close", style: .default, handler: {})])
@@ -102,9 +105,12 @@ class LibraryController: WKInterfaceController {
 		
 		if let info = table.rowController(at: 1) as? InfoRow {
 			if noGamesFound {
+				info.refreshHandler = reloadGames
+				info.refreshButton.setHidden(false)
 				info.titleLabel.setText("Add games to your phone’s Documents folder from iTunes")
 			} else {
-				info.titleLabel.setText("Loading...")
+				info.titleLabel.setText("Looking for games...")
+				info.refreshButton.setHidden(true)
 			}
 		}
 		
