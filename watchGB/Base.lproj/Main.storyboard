@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,40 +18,44 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6mA-e5-cFs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUR-NM-LNa">
-                                        <rect key="frame" x="67.5" y="0.0" width="240" height="646.5"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gio_l" translatesAutoresizingMaskIntoConstraints="NO" id="0hC-X7-9vX">
-                                                <rect key="frame" x="-200.5" y="6.5" width="640" height="640"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="0hC-X7-9vX" secondAttribute="bottom" id="1aT-lF-h5I"/>
-                                            <constraint firstItem="0hC-X7-9vX" firstAttribute="centerX" secondItem="qUR-NM-LNa" secondAttribute="centerX" id="AG8-hp-soJ"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crs-rT-3Ea">
-                                        <rect key="frame" x="166.5" y="646.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="to1-g3-ng1">
+                                <rect key="frame" x="0.0" y="516" width="320" height="52"/>
+                                <color key="backgroundColor" red="0.094102360309999994" green="0.094126455489999997" blue="0.09410081059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" image="GIOVANNI" translatesAutoresizingMaskIntoConstraints="NO" id="Lb4-lM-q9q">
+                                <rect key="frame" x="22" y="516" width="276" height="12"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzm-uG-1io">
+                                <rect key="frame" x="126" y="536" width="68" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <state key="normal" title="©G0C 2017">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYL-LX-O5y"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="GtW-Cx-q2X">
+                                <rect key="frame" x="0.0" y="52" width="320" height="464"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.9993709921836853" green="0.14531728625297546" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6mA-e5-cFs" secondAttribute="trailing" id="EyT-Nh-szn"/>
-                            <constraint firstItem="6mA-e5-cFs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OOT-cP-1qx"/>
-                            <constraint firstItem="6mA-e5-cFs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P7J-Dr-XEE"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6mA-e5-cFs" secondAttribute="bottom" id="USP-SM-dHT"/>
+                            <constraint firstItem="to1-g3-ng1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="59n-If-k0z"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="to1-g3-ng1" secondAttribute="bottom" id="DLq-eZ-DI7"/>
+                            <constraint firstItem="Lb4-lM-q9q" firstAttribute="top" secondItem="GtW-Cx-q2X" secondAttribute="bottom" priority="999" id="DMp-cW-qwW"/>
+                            <constraint firstItem="to1-g3-ng1" firstAttribute="top" secondItem="GtW-Cx-q2X" secondAttribute="bottom" id="FNv-rD-krE"/>
+                            <constraint firstItem="to1-g3-ng1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gzf-Wj-oe2"/>
+                            <constraint firstItem="dzm-uG-1io" firstAttribute="top" secondItem="Lb4-lM-q9q" secondAttribute="bottom" constant="8" id="HJE-vX-5r9"/>
+                            <constraint firstItem="GtW-Cx-q2X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nbm-mq-kOh"/>
+                            <constraint firstItem="GtW-Cx-q2X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aoh-OD-hlh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lb4-lM-q9q" secondAttribute="bottom" constant="40" id="spL-z6-kPe"/>
+                            <constraint firstItem="Lb4-lM-q9q" firstAttribute="centerX" secondItem="GtW-Cx-q2X" secondAttribute="centerX" id="tPR-3M-1xz"/>
+                            <constraint firstItem="dzm-uG-1io" firstAttribute="centerX" secondItem="Lb4-lM-q9q" secondAttribute="centerX" id="x35-Lc-u8b"/>
+                            <constraint firstAttribute="leading" secondItem="GtW-Cx-q2X" secondAttribute="leading" id="zN9-3c-qVh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -61,6 +65,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gio_l" width="640" height="640"/>
+        <image name="GIOVANNI" width="276" height="12"/>
+        <image name="launch" width="414" height="510"/>
     </resources>
 </document>

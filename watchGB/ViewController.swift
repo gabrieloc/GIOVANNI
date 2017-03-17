@@ -8,13 +8,24 @@
 
 import UIKit
 import WatchConnectivity
+import SafariServices
 
 class ViewController: UIViewController {
 
+	@IBAction func buttonSelected(_ sender: Any) {
+		let url = URL(string: "https://twitter.com/_gabrieloc")!
+		let safariViewController = SFSafariViewController(url: url)
+		present(safariViewController, animated: true, completion: nil)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	
 		prepareSession()
+	}
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
 	}
 	
 	var documentsDirectory: URL? {
