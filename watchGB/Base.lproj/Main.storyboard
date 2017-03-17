@@ -29,9 +29,9 @@
                                 <rect key="frame" x="22" y="516" width="276" height="12"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzm-uG-1io">
-                                <rect key="frame" x="126" y="536" width="68" height="27"/>
+                                <rect key="frame" x="103" y="536" width="114" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                <state key="normal" title="©G0C 2017">
+                                <state key="normal" title="©2017 @_gabrieloc">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
