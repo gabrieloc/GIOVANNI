@@ -30,10 +30,13 @@ If for some reason the app becomes unresponsive and must be force-quit, you can 
 ### Games don't show up
 Because Giovanni relies on your iPhone for transferring games, ensure your paired iPhone is on and within reach.
 
-### Garbled pixels
+### Garbled (or all white) pixels
 Video memory often gets corrupt, in which case you will have to force emulation to be reset. While in-game, force touch the screen and select Reset. If the app closes after that, you will have to re-open, and repeat the process until it works.
 
 ### Colors wrong
 Some games appear to format pixel data differently. The rendering work is done in [GameCoreSnapshots.swift](https://github.com/gabrieloc/GIOVANNI/blob/master/gambatte_watchOS/GameCoreSnapshots.swift), you may have luck adjusting how the Core Graphics context is created.
 
+## Known Issues
 
+### Games sometime crash when trying to fill the sound buffer
+The sound buffer isn't even used, but required by Gambatte. The issue goes away after re-opening the app, but is a huge pain regardless.
