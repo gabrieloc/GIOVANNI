@@ -149,16 +149,16 @@ extension GameLoader: WCSessionDelegate {
 	public func session(_ session: WCSession, didReceive file: WCSessionFile) {
 		print("received \(file)")
 		
-		guard let response = gameResponse else {
+		guard let response = gameResponse, let fileURL = file.fileURL else {
 			return
 		}
 		do {
-			let name = file.fileURL.lastPathComponent
-			try FileManager.default.moveItem(at: file.fileURL, to: cacheURL!.appendingPathComponent(name))
+			let name = fileURL.lastPathComponent
+			try FileManager.default.moveItem(at: fileURL, to: cacheURL!.appendingPathComponent(name))
 		} catch (let error) {
 			print("issue moving received file \(error)")
 		}
-		response(file.fileURL.path)
+		response(fileURL.path)
 	}
 	
 	public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

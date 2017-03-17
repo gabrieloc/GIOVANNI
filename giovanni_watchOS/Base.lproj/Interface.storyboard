@@ -11,7 +11,7 @@
         <!--GamePlay-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="GamePlay" id="AgC-eL-Hgc" customClass="GameplayController" customModule="watchGB_WatchKit_Extension">
+                <controller identifier="GamePlay" id="AgC-eL-Hgc" customClass="GameplayController" customModule="giovanni_WatchKit_Extension">
                     <items>
                         <imageView width="1" height="0.80000000000000004" alignment="left" image="loading" contentMode="scaleAspectFill" id="aJl-Oj-bNg">
                             <gestureRecognizers>
@@ -86,7 +86,7 @@ SL</string>
         <!--Library Controller-->
         <scene sceneID="hYo-3W-FtS">
             <objects>
-                <controller id="7hZ-R3-GZe" customClass="LibraryController" customModule="watchGB_WatchKit_Extension">
+                <controller id="7hZ-R3-GZe" customClass="LibraryController" customModule="giovanni_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="Iw1-TF-n5i">
                             <items>

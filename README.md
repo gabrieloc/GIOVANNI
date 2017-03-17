@@ -25,6 +25,8 @@ The control scheme is as follows:
 
 Disclaimer: Due to the constraints of watchOS, you may experience crashes or graphical glitches. Keep in mind that this project likely does not align with what Apple expects from the platform, which in turn makes it difficult to optimize and debug.
 
+If for some reason the app becomes unresponsive and must be force-quit, you can do so by having the app in the foreground, pressing the side button, then pressing and holding the Digital Crown for about 5 seconds.
+
 ### Games don't show up
 Because Giovanni relies on your iPhone for transferring games, ensure your paired iPhone is on and within reach.
 
@@ -33,4 +35,5 @@ Video memory often gets corrupt, in which case you will have to force emulation 
 
 ### Colors wrong
 Some games appear to format pixel data differently. The rendering work is done in [GameCoreSnapshots.swift](https://github.com/gabrieloc/GIOVANNI/blob/master/gambatte_watchOS/GameCoreSnapshots.swift), you may have luck adjusting how the Core Graphics context is created.
+
 
