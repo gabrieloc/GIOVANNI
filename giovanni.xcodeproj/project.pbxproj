@@ -156,9 +156,9 @@
 		B2DC85031E5DC6CB00CC1028 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85011E5DC6CB00CC1028 /* Main.storyboard */; };
 		B2DC85051E5DC6CB00CC1028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85041E5DC6CB00CC1028 /* Assets.xcassets */; };
 		B2DC85081E5DC6CB00CC1028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85061E5DC6CB00CC1028 /* LaunchScreen.storyboard */; };
-		B2DC850D1E5DC6CC00CC1028 /* gio.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B2DC850C1E5DC6CC00CC1028 /* gio.app */; };
+		B2DC850D1E5DC6CC00CC1028 /* giovanni_watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B2DC850C1E5DC6CC00CC1028 /* giovanni_watchOS.app */; };
 		B2DC85151E5DC6CC00CC1028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85141E5DC6CC00CC1028 /* Assets.xcassets */; };
-		B2DC851C1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B2DC851B1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B2DC851C1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B2DC851B1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B2DC85211E5DC6CC00CC1028 /* LibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC85201E5DC6CC00CC1028 /* LibraryController.swift */; };
 		B2DC85231E5DC6CC00CC1028 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC85221E5DC6CC00CC1028 /* ExtensionDelegate.swift */; };
 		B2DC85251E5DC6CC00CC1028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85241E5DC6CC00CC1028 /* Assets.xcassets */; };
@@ -227,7 +227,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B2DC851C1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex in Embed App Extensions */,
+				B2DC851C1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +238,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				B2DC850D1E5DC6CC00CC1028 /* gio.app in Embed Watch Content */,
+				B2DC850D1E5DC6CC00CC1028 /* giovanni_watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,18 +392,18 @@
 		B223A5821E62ADA800A74FA6 /* OpenEmuBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OpenEmuBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OETimingUtils.h; sourceTree = "<group>"; };
 		B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OETimingUtils.m; sourceTree = "<group>"; };
-		B2DC84FA1E5DC6CB00CC1028 /* giovanni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = giovanni.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DC84FA1E5DC6CB00CC1028 /* giovanni_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = giovanni_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DC84FD1E5DC6CB00CC1028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DC84FF1E5DC6CB00CC1028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B2DC85021E5DC6CB00CC1028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2DC85041E5DC6CB00CC1028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2DC85071E5DC6CB00CC1028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2DC85091E5DC6CB00CC1028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2DC850C1E5DC6CC00CC1028 /* gio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DC850C1E5DC6CC00CC1028 /* giovanni_watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = giovanni_watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DC85121E5DC6CC00CC1028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		B2DC85141E5DC6CC00CC1028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2DC85161E5DC6CC00CC1028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2DC851B1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchGB WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DC851B1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "giovanni WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DC85201E5DC6CC00CC1028 /* LibraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryController.swift; sourceTree = "<group>"; };
 		B2DC85221E5DC6CC00CC1028 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B2DC85241E5DC6CC00CC1028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -715,9 +715,9 @@
 		B2DC84F11E5DC6CB00CC1028 = {
 			isa = PBXGroup;
 			children = (
-				B2DC84FC1E5DC6CB00CC1028 /* watchGB */,
-				B2DC85101E5DC6CC00CC1028 /* watchGB WatchKit App */,
-				B2DC851F1E5DC6CC00CC1028 /* watchGB WatchKit Extension */,
+				B2DC84FC1E5DC6CB00CC1028 /* giovanni_iOS */,
+				B2DC85101E5DC6CC00CC1028 /* giovanni_watchOS */,
+				B2DC851F1E5DC6CC00CC1028 /* giovanni WatchKit Extension */,
 				B21D7CE81E6C515900002F89 /* gambatte_watchOS */,
 				B2DC84FB1E5DC6CB00CC1028 /* Products */,
 				B2CF4F7E1E5F434C00344102 /* Frameworks */,
@@ -727,15 +727,15 @@
 		B2DC84FB1E5DC6CB00CC1028 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2DC84FA1E5DC6CB00CC1028 /* giovanni.app */,
-				B2DC850C1E5DC6CC00CC1028 /* gio.app */,
-				B2DC851B1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex */,
+				B2DC84FA1E5DC6CB00CC1028 /* giovanni_iOS.app */,
+				B2DC850C1E5DC6CC00CC1028 /* giovanni_watchOS.app */,
+				B2DC851B1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex */,
 				B21D7CE71E6C515900002F89 /* Gambatte_watchOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2DC84FC1E5DC6CB00CC1028 /* watchGB */ = {
+		B2DC84FC1E5DC6CB00CC1028 /* giovanni_iOS */ = {
 			isa = PBXGroup;
 			children = (
 				B2DC84FD1E5DC6CB00CC1028 /* AppDelegate.swift */,
@@ -745,20 +745,20 @@
 				B2DC85061E5DC6CB00CC1028 /* LaunchScreen.storyboard */,
 				B2DC85091E5DC6CB00CC1028 /* Info.plist */,
 			);
-			path = watchGB;
+			path = giovanni_iOS;
 			sourceTree = "<group>";
 		};
-		B2DC85101E5DC6CC00CC1028 /* watchGB WatchKit App */ = {
+		B2DC85101E5DC6CC00CC1028 /* giovanni_watchOS */ = {
 			isa = PBXGroup;
 			children = (
 				B2DC85111E5DC6CC00CC1028 /* Interface.storyboard */,
 				B2DC85141E5DC6CC00CC1028 /* Assets.xcassets */,
 				B2DC85161E5DC6CC00CC1028 /* Info.plist */,
 			);
-			path = "watchGB WatchKit App";
+			path = giovanni_watchOS;
 			sourceTree = "<group>";
 		};
-		B2DC851F1E5DC6CC00CC1028 /* watchGB WatchKit Extension */ = {
+		B2DC851F1E5DC6CC00CC1028 /* giovanni WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B2DC85201E5DC6CC00CC1028 /* LibraryController.swift */,
@@ -772,7 +772,7 @@
 				B2DC85241E5DC6CC00CC1028 /* Assets.xcassets */,
 				B2DC85261E5DC6CC00CC1028 /* Info.plist */,
 			);
-			path = "watchGB WatchKit Extension";
+			path = "giovanni WatchKit Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -891,9 +891,9 @@
 			productReference = B21D7CE71E6C515900002F89 /* Gambatte_watchOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B2DC84F91E5DC6CB00CC1028 /* giovanni */ = {
+		B2DC84F91E5DC6CB00CC1028 /* giovanni_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2DC85311E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni" */;
+			buildConfigurationList = B2DC85311E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni_iOS" */;
 			buildPhases = (
 				B2DC84F61E5DC6CB00CC1028 /* Sources */,
 				B2DC84F71E5DC6CB00CC1028 /* Frameworks */,
@@ -905,14 +905,14 @@
 			dependencies = (
 				B2DC850F1E5DC6CC00CC1028 /* PBXTargetDependency */,
 			);
-			name = giovanni;
+			name = giovanni_iOS;
 			productName = watchGB;
-			productReference = B2DC84FA1E5DC6CB00CC1028 /* giovanni.app */;
+			productReference = B2DC84FA1E5DC6CB00CC1028 /* giovanni_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B2DC850B1E5DC6CC00CC1028 /* gio */ = {
+		B2DC850B1E5DC6CC00CC1028 /* giovanni_watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2DC852D1E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "gio" */;
+			buildConfigurationList = B2DC852D1E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni_watchOS" */;
 			buildPhases = (
 				B2DC850A1E5DC6CC00CC1028 /* Resources */,
 				B2DC852C1E5DC6CC00CC1028 /* Embed App Extensions */,
@@ -925,14 +925,14 @@
 				B2DC851E1E5DC6CC00CC1028 /* PBXTargetDependency */,
 				B21D7CF71E6C51A300002F89 /* PBXTargetDependency */,
 			);
-			name = gio;
+			name = giovanni_watchOS;
 			productName = "watchGB WatchKit App";
-			productReference = B2DC850C1E5DC6CC00CC1028 /* gio.app */;
+			productReference = B2DC850C1E5DC6CC00CC1028 /* giovanni_watchOS.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		B2DC851A1E5DC6CC00CC1028 /* watchGB WatchKit Extension */ = {
+		B2DC851A1E5DC6CC00CC1028 /* giovanni WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2DC85291E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "watchGB WatchKit Extension" */;
+			buildConfigurationList = B2DC85291E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni WatchKit Extension" */;
 			buildPhases = (
 				B2DC85171E5DC6CC00CC1028 /* Sources */,
 				B2DC85181E5DC6CC00CC1028 /* Frameworks */,
@@ -944,9 +944,9 @@
 			dependencies = (
 				B21D7CED1E6C515900002F89 /* PBXTargetDependency */,
 			);
-			name = "watchGB WatchKit Extension";
+			name = "giovanni WatchKit Extension";
 			productName = "watchGB WatchKit Extension";
-			productReference = B2DC851B1E5DC6CC00CC1028 /* watchGB WatchKit Extension.appex */;
+			productReference = B2DC851B1E5DC6CC00CC1028 /* giovanni WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -982,7 +982,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B2DC84F51E5DC6CB00CC1028 /* Build configuration list for PBXProject "watchGB" */;
+			buildConfigurationList = B2DC84F51E5DC6CB00CC1028 /* Build configuration list for PBXProject "giovanni" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -995,9 +995,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B2DC84F91E5DC6CB00CC1028 /* giovanni */,
-				B2DC850B1E5DC6CC00CC1028 /* gio */,
-				B2DC851A1E5DC6CC00CC1028 /* watchGB WatchKit Extension */,
+				B2DC84F91E5DC6CB00CC1028 /* giovanni_iOS */,
+				B2DC850B1E5DC6CC00CC1028 /* giovanni_watchOS */,
+				B2DC851A1E5DC6CC00CC1028 /* giovanni WatchKit Extension */,
 				B21D7CE61E6C515900002F89 /* Gambatte_watchOS */,
 			);
 		};
@@ -1137,12 +1137,12 @@
 		};
 		B2DC850F1E5DC6CC00CC1028 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B2DC850B1E5DC6CC00CC1028 /* gio */;
+			target = B2DC850B1E5DC6CC00CC1028 /* giovanni_watchOS */;
 			targetProxy = B2DC850E1E5DC6CC00CC1028 /* PBXContainerItemProxy */;
 		};
 		B2DC851E1E5DC6CC00CC1028 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B2DC851A1E5DC6CC00CC1028 /* watchGB WatchKit Extension */;
+			target = B2DC851A1E5DC6CC00CC1028 /* giovanni WatchKit Extension */;
 			targetProxy = B2DC851D1E5DC6CC00CC1028 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1332,13 +1332,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/openemu-sdk/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = "watchGB WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Gambatte/libgambatte",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1357,13 +1357,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/openemu-sdk/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = "watchGB WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Gambatte/libgambatte",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1380,10 +1380,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = USYSB33394;
-				IBSC_MODULE = watchGB_WatchKit_Extension;
-				INFOPLIST_FILE = "watchGB WatchKit App/Info.plist";
+				IBSC_MODULE = giovanni_WatchKit_Extension;
+				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1400,10 +1400,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = USYSB33394;
-				IBSC_MODULE = watchGB_WatchKit_Extension;
-				INFOPLIST_FILE = "watchGB WatchKit App/Info.plist";
+				IBSC_MODULE = giovanni_WatchKit_Extension;
+				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1418,9 +1418,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = USYSB33394;
-				INFOPLIST_FILE = watchGB/Info.plist;
+				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1432,9 +1432,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = USYSB33394;
-				INFOPLIST_FILE = watchGB/Info.plist;
+				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.watchGB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1453,7 +1453,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2DC84F51E5DC6CB00CC1028 /* Build configuration list for PBXProject "watchGB" */ = {
+		B2DC84F51E5DC6CB00CC1028 /* Build configuration list for PBXProject "giovanni" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2DC85271E5DC6CC00CC1028 /* Debug */,
@@ -1462,7 +1462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2DC85291E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "watchGB WatchKit Extension" */ = {
+		B2DC85291E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2DC852A1E5DC6CC00CC1028 /* Debug */,
@@ -1471,7 +1471,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2DC852D1E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "gio" */ = {
+		B2DC852D1E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni_watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2DC852E1E5DC6CC00CC1028 /* Debug */,
@@ -1480,7 +1480,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2DC85311E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni" */ = {
+		B2DC85311E5DC6CC00CC1028 /* Build configuration list for PBXNativeTarget "giovanni_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B2DC85321E5DC6CC00CC1028 /* Debug */,

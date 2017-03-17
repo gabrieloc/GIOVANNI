@@ -103,7 +103,7 @@ public:
 
 	running = YES;
 	gameCoreThread = [[NSThread alloc] initWithTarget:self selector:@selector(runGameLoop) object:nil];
-	gameCoreThread.name = @"watchGB Game Core";
+	gameCoreThread.name = @"Giovanni Game Core";
 	gameCoreThread.qualityOfService = NSQualityOfServiceUserInteractive;
 	[gameCoreThread start];
 }

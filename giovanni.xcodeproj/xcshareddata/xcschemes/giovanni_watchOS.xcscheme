@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-               BuildableName = "gio.app"
-               BlueprintName = "gio"
-               ReferencedContainer = "container:watchGB.xcodeproj">
+               BuildableName = "giovanni_watchOS.app"
+               BlueprintName = "giovanni_watchOS"
+               ReferencedContainer = "container:giovanni.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B2DC84F91E5DC6CB00CC1028"
-               BuildableName = "giovanni.app"
-               BlueprintName = "giovanni"
-               ReferencedContainer = "container:watchGB.xcodeproj">
+               BuildableName = "giovanni_iOS.app"
+               BlueprintName = "giovanni_iOS"
+               ReferencedContainer = "container:giovanni.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-            BuildableName = "gio.app"
-            BlueprintName = "gio"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BuildableName = "giovanni_watchOS.app"
+            BlueprintName = "giovanni_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -72,18 +72,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-            BuildableName = "gio.app"
-            BlueprintName = "gio"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BuildableName = "giovanni_watchOS.app"
+            BlueprintName = "giovanni_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-            BuildableName = "gio.app"
-            BlueprintName = "gio"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BuildableName = "giovanni_watchOS.app"
+            BlueprintName = "giovanni_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -109,18 +109,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-            BuildableName = "gio.app"
-            BlueprintName = "gio"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BuildableName = "giovanni_watchOS.app"
+            BlueprintName = "giovanni_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B2DC850B1E5DC6CC00CC1028"
-            BuildableName = "gio.app"
-            BlueprintName = "gio"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BuildableName = "giovanni_watchOS.app"
+            BlueprintName = "giovanni_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

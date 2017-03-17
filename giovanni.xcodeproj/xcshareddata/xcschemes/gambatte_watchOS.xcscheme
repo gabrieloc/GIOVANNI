@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B2DC84F91E5DC6CB00CC1028"
-               BuildableName = "giovanni.app"
-               BlueprintName = "giovanni"
-               ReferencedContainer = "container:watchGB.xcodeproj">
+               BlueprintIdentifier = "B21D7CE61E6C515900002F89"
+               BuildableName = "Gambatte_watchOS.framework"
+               BlueprintName = "Gambatte_watchOS"
+               ReferencedContainer = "container:giovanni.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2DC84F91E5DC6CB00CC1028"
-            BuildableName = "giovanni.app"
-            BlueprintName = "giovanni"
-            ReferencedContainer = "container:watchGB.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2DC84F91E5DC6CB00CC1028"
-            BuildableName = "giovanni.app"
-            BlueprintName = "giovanni"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BlueprintIdentifier = "B21D7CE61E6C515900002F89"
+            BuildableName = "Gambatte_watchOS.framework"
+            BlueprintName = "Gambatte_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2DC84F91E5DC6CB00CC1028"
-            BuildableName = "giovanni.app"
-            BlueprintName = "giovanni"
-            ReferencedContainer = "container:watchGB.xcodeproj">
+            BlueprintIdentifier = "B21D7CE61E6C515900002F89"
+            BuildableName = "Gambatte_watchOS.framework"
+            BlueprintName = "Gambatte_watchOS"
+            ReferencedContainer = "container:giovanni.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
