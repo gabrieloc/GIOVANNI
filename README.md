@@ -3,6 +3,8 @@
 
 **A Gameboy Emulator for the Apple Watch.**
 
+**Interested in how this was made? Check out the write-up [here](http://gabrieloc.com/2017/03/21/GIOVANNI.html)**
+
 ## Installation
 
 Giovanni uses git submodules for it's one dependency, a modified version of the [Gambatte](https://github.com/gabrieloc/gambatte) emulator. When cloning, ensure submodules are also pulled down:
