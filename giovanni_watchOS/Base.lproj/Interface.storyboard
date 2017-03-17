@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12113" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12078"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12027"/>
     </dependencies>
     <scenes>
         <!--GamePlay-->
@@ -98,10 +98,10 @@ SL</string>
                                         <color key="backgroundColor" red="0.9993709921836853" green="0.14531728625297546" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </group>
                                 </tableRow>
-                                <tableRow identifier="Info" selectable="NO" id="fwh-2v-kWc" customClass="InfoRow" customModule="watchGB_WatchKit_Extension">
+                                <tableRow identifier="Info" selectable="NO" id="fwh-2v-kWc" customClass="InfoRow" customModule="giovanni_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" spacing="0.0" id="bli-7y-Vdh">
                                         <items>
-                                            <label width="1" alignment="left" text="Info" textAlignment="left" numberOfLines="0" id="bZ1-on-mww">
+                                            <label width="1" alignment="left" text="Loading" textAlignment="left" numberOfLines="0" id="bZ1-on-mww">
                                                 <color key="textColor" red="0.99937099220000003" green="0.14531728629999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                             </label>
@@ -112,7 +112,7 @@ SL</string>
                                         <outlet property="titleLabel" destination="bZ1-on-mww" id="AfP-hb-mJe"/>
                                     </connections>
                                 </tableRow>
-                                <tableRow identifier="GameRow" id="fFq-Ha-OSs" customClass="GameRow" customModule="watchGB_WatchKit_Extension">
+                                <tableRow identifier="GameRow" id="fFq-Ha-OSs" customClass="GameRow" customModule="giovanni_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="PWx-CH-ukM">
                                         <items>
                                             <label width="1" height="1" alignment="left" text="Pokemon - Yellow Version (UE)" textAlignment="left" numberOfLines="0" id="NDJ-HY-IOo">
