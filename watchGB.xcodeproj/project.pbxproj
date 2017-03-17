@@ -146,8 +146,8 @@
 		B21D7E251E6C5AB100002F89 /* maxsthq3x.h in Headers */ = {isa = PBXBuildFile; fileRef = B21D7DEF1E6C5AB100002F89 /* maxsthq3x.h */; };
 		B21D7E261E6C5AB100002F89 /* videolink.h in Headers */ = {isa = PBXBuildFile; fileRef = B21D7DF01E6C5AB100002F89 /* videolink.h */; };
 		B21E0C031E6EF04E009DAA84 /* GameInputAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E0C021E6EF04E009DAA84 /* GameInputAdditions.swift */; };
-		B29F1A631E6D7C0B00FA89B4 /* TimingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B29F1A611E6D7C0B00FA89B4 /* TimingUtils.h */; };
-		B29F1A641E6D7C0B00FA89B4 /* TimingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F1A621E6D7C0B00FA89B4 /* TimingUtils.m */; };
+		B29F1A631E6D7C0B00FA89B4 /* OETimingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */; };
+		B29F1A641E6D7C0B00FA89B4 /* OETimingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */; };
 		B29F1A711E6D870600FA89B4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B21D7E271E6C5B6C00002F89 /* libc++.tbd */; };
 		B2C73C971E629602004B1B5F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF6DD21E61C3D3001A811B /* Game.swift */; };
 		B2C73C981E629602004B1B5F /* GameLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF6DD31E61C3D3001A811B /* GameLoader.swift */; };
@@ -390,8 +390,8 @@
 		B21D7E271E6C5B6C00002F89 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B21E0C021E6EF04E009DAA84 /* GameInputAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInputAdditions.swift; sourceTree = "<group>"; };
 		B223A5821E62ADA800A74FA6 /* OpenEmuBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OpenEmuBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B29F1A611E6D7C0B00FA89B4 /* TimingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimingUtils.h; sourceTree = "<group>"; };
-		B29F1A621E6D7C0B00FA89B4 /* TimingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimingUtils.m; sourceTree = "<group>"; };
+		B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OETimingUtils.h; sourceTree = "<group>"; };
+		B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OETimingUtils.m; sourceTree = "<group>"; };
 		B2DC84FA1E5DC6CB00CC1028 /* giovanni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = giovanni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DC84FD1E5DC6CB00CC1028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DC84FF1E5DC6CB00CC1028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -454,8 +454,8 @@
 			children = (
 				B21D7CFA1E6C532400002F89 /* GameCore.h */,
 				B21D7CFB1E6C532400002F89 /* GameCore.mm */,
-				B29F1A611E6D7C0B00FA89B4 /* TimingUtils.h */,
-				B29F1A621E6D7C0B00FA89B4 /* TimingUtils.m */,
+				B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */,
+				B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */,
 				B21D7D0C1E6C5AAB00002F89 /* libgambatte */,
 				B21D7CE91E6C515900002F89 /* gambatte_watchOS.h */,
 				B21D7CEA1E6C515900002F89 /* Info.plist */,
@@ -866,7 +866,7 @@
 				B21D7DA11E6C5AAB00002F89 /* sound.h in Headers */,
 				B21D7D9A1E6C5AAB00002F89 /* envelope_unit.h in Headers */,
 				B21D7DF41E6C5AB100002F89 /* defined_ptr.h in Headers */,
-				B29F1A631E6D7C0B00FA89B4 /* TimingUtils.h in Headers */,
+				B29F1A631E6D7C0B00FA89B4 /* OETimingUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,7 +1087,7 @@
 				B21D7E0B1E6C5AB100002F89 /* resamplerinfo.cpp in Sources */,
 				B21D7D6B1E6C5AAB00002F89 /* bitmap_font.cpp in Sources */,
 				B21D7DB41E6C5AAB00002F89 /* video.cpp in Sources */,
-				B29F1A641E6D7C0B00FA89B4 /* TimingUtils.m in Sources */,
+				B29F1A641E6D7C0B00FA89B4 /* OETimingUtils.m in Sources */,
 				B21D7DA21E6C5AAB00002F89 /* state_osd_elements.cpp in Sources */,
 				B21D7E131E6C5AB100002F89 /* skipsched.cpp in Sources */,
 				B21D7DAB1E6C5AAB00002F89 /* lyc_irq.cpp in Sources */,
