@@ -150,11 +150,19 @@ class GameplayController: WKInterfaceController {
 			return
 		}
 		
-		loader.loadGame(game, { [unowned self] (core) in
+		let success: ((GameCore) -> Void) = { [unowned self] (core) in
 			self.core = core
-		}) { (error) in
-			print("error loading game \(error)")
 		}
+		let failureHandler: ((Error) -> Void) = { [unowned self] (error) in
+			print("error loading game \(error)")
+			self.presentAlert(withTitle: "There was an issue loading this game", message: nil, preferredStyle: .alert, actions: [
+				WKAlertAction(title: "Close", style: .default, handler: { [unowned self] in
+					self.pop()
+				})
+				])
+		}
+		
+		loader.loadGame(game, success, failure: failureHandler)
 		
 		(GameInput.directionalInputs + [GameInput.A]).forEach {
 			self.setInputSelected($0, selected: false)

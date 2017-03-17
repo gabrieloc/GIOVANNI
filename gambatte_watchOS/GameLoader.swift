@@ -157,11 +157,13 @@ extension GameLoader: WCSessionDelegate {
 		}
 		do {
 			let name = fileURL.lastPathComponent
-			try FileManager.default.moveItem(at: fileURL, to: cacheURL!.appendingPathComponent(name))
+			let destinationPath = cacheURL!.appendingPathComponent(name)
+			try FileManager.default.moveItem(at: fileURL, to: destinationPath)
+			response(destinationPath.path)
 		} catch (let error) {
 			print("issue moving received file \(error)")
+			response("")
 		}
-		response(fileURL.path)
 	}
 	
 	public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
