@@ -148,7 +148,6 @@
 		B21E0C031E6EF04E009DAA84 /* GameInputAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E0C021E6EF04E009DAA84 /* GameInputAdditions.swift */; };
 		B29F1A631E6D7C0B00FA89B4 /* OETimingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */; };
 		B29F1A641E6D7C0B00FA89B4 /* OETimingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */; };
-		B29F1A711E6D870600FA89B4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B21D7E271E6C5B6C00002F89 /* libc++.tbd */; };
 		B2C73C971E629602004B1B5F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF6DD21E61C3D3001A811B /* Game.swift */; };
 		B2C73C981E629602004B1B5F /* GameLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF6DD31E61C3D3001A811B /* GameLoader.swift */; };
 		B2DC84FE1E5DC6CB00CC1028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC84FD1E5DC6CB00CC1028 /* AppDelegate.swift */; };
@@ -387,7 +386,6 @@
 		B21D7DEE1E6C5AB100002F89 /* maxsthq3x.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maxsthq3x.cpp; sourceTree = "<group>"; };
 		B21D7DEF1E6C5AB100002F89 /* maxsthq3x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxsthq3x.h; sourceTree = "<group>"; };
 		B21D7DF01E6C5AB100002F89 /* videolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = videolink.h; sourceTree = "<group>"; };
-		B21D7E271E6C5B6C00002F89 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B21E0C021E6EF04E009DAA84 /* GameInputAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInputAdditions.swift; sourceTree = "<group>"; };
 		B29F1A611E6D7C0B00FA89B4 /* OETimingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OETimingUtils.h; sourceTree = "<group>"; };
 		B29F1A621E6D7C0B00FA89B4 /* OETimingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OETimingUtils.m; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29F1A711E6D870600FA89B4 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,14 +699,6 @@
 			path = vfilters;
 			sourceTree = "<group>";
 		};
-		B2CF4F7E1E5F434C00344102 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B21D7E271E6C5B6C00002F89 /* libc++.tbd */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B2DC84F11E5DC6CB00CC1028 = {
 			isa = PBXGroup;
 			children = (
@@ -718,7 +707,6 @@
 				B2DC851F1E5DC6CC00CC1028 /* giovanni WatchKit Extension */,
 				B21D7CE81E6C515900002F89 /* gambatte_watchOS */,
 				B2DC84FB1E5DC6CB00CC1028 /* Products */,
-				B2CF4F7E1E5F434C00344102 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
