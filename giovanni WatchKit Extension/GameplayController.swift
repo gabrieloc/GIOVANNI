@@ -84,7 +84,7 @@ class GameplayController: WKInterfaceController {
 	@IBAction func BSelected()		{ pressInputOnce(.B) }
 	
 	@IBAction func resetSelected() {
-		core?.resetEmulation()
+		loader.core?.resetEmulation()
 	}
 	
 	@IBOutlet var ALabel: WKInterfaceLabel!
@@ -94,7 +94,7 @@ class GameplayController: WKInterfaceController {
 	
 	func updateDirectionalInputs() {
 
-		guard let core = core else {
+		guard let core = loader.core else {
 			DPadLabel.setText(GameInput(rawValue: 0).displaySymbol)
 			return
 		}
@@ -126,18 +126,6 @@ class GameplayController: WKInterfaceController {
 	}
 	
 	let loader = GameLoader.shared
-	var core: GameCore? {
-		didSet {
-			if let core = core {
-				core.didRender = { [weak self] buffer in
-					guard let s = self else {
-						return
-					}
-					s.updateSnapshotIfNeeded(with: buffer)
-				}
-			}
-		}
-	}
 	
 	var tick = 0
 	let refreshRate = 20;
@@ -151,8 +139,14 @@ class GameplayController: WKInterfaceController {
 		}
 		
 		let success: ((GameCore) -> Void) = { [unowned self] (core) in
-			self.core = core
+			core.didRender = { [weak self] buffer in
+				guard let s = self else {
+					return
+				}
+				s.updateSnapshotIfNeeded(with: buffer)
+			}
 		}
+		
 		let failureHandler: ((Error) -> Void) = { [unowned self] (error) in
 			print("error loading game \(error)")
 			self.presentAlert(withTitle: "There was an issue loading this game", message: nil, preferredStyle: .alert, actions: [
@@ -172,9 +166,9 @@ class GameplayController: WKInterfaceController {
 	override func didAppear() {
 		super.didAppear()
 		
-		if let core = core {
-			core.startEmulation()
+		if let core = loader.core {
 			core.load(fromSlot: 0)
+			core.paused = false
 		}
 		
 		crownSequencer.delegate = self
@@ -184,25 +178,25 @@ class GameplayController: WKInterfaceController {
 	override func didDeactivate() {
 		super.didDeactivate()
 		
-		if let core = core {
+		if let core = loader.core {
 			core.save(toSlot: 0)
-			core.stopEmulation()
+			core.paused = true;
 		}
 		
 		crownSequencer.delegate = nil
 		crownSequencer.resignFocus()
 	}
-	
+
 	var lastSnapshot: UIImage?
 	
 	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
 		
 		tick += 1
-		if tick > refreshRate || core == nil {
+		if tick > refreshRate || loader.core == nil {
 			return
 		}
 		
-		let snapshot = core!.createSnapshot(from: buffer)
+		let snapshot = loader.core!.createSnapshot(from: buffer)
 		
 		// compare before updating. Not sure if faster.
 //		if let lhs = lastSnapshot, let rhs = snapshot, lhs.equalPixels(to: rhs) {
@@ -230,7 +224,7 @@ class GameplayController: WKInterfaceController {
 	
 	func setInputSelected(_ input: GameInput, selected: Bool) {
 		
-		if let core = core {
+		if let core = loader.core {
 			core.update(input, selected: selected)
 		}
 		
