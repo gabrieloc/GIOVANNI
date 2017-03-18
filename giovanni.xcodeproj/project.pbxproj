@@ -947,23 +947,19 @@
 				TargetAttributes = {
 					B21D7CE61E6C515900002F89 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = USYSB33394;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B2DC84F91E5DC6CB00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 					B2DC850B1E5DC6CC00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 					B2DC851A1E5DC6CC00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1169,7 +1165,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1197,7 +1193,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1313,7 +1309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1335,7 +1331,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1359,7 +1355,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = giovanni_WatchKit_Extension;
 				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1379,7 +1375,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = giovanni_WatchKit_Extension;
 				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1397,7 +1393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;
@@ -1411,7 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = USYSB33394;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;
