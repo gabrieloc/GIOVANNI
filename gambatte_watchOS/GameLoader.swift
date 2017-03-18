@@ -164,7 +164,9 @@ extension GameLoader: WCSessionDelegate {
 	public func session(_ session: WCSession, didReceive file: WCSessionFile) {
 		print("received \(file)")
 		
-		guard let response = gameResponse, let fileURL = file.fileURL else {
+		let fileURL = file.fileURL
+		
+		guard let response = gameResponse else {
 			return
 		}
 		do {
