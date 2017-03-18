@@ -64,16 +64,8 @@ public class GameLoader: NSObject {
 		var reason: String
 	}
 	
-	var core: GameCore? {
-		didSet {
-			if let oldCore = oldValue {
-				oldCore.stopEmulation()
-			}
-			if let newCore = core {
-				newCore.startEmulation()
-			}
-		}
-	}
+	let core: GameCore
+	let documentDirectory: URL
 	let session = WCSession.default()
 	var activationState: WCSessionActivationState = .notActivated
 	
@@ -84,6 +76,12 @@ public class GameLoader: NSObject {
 	static let shared = GameLoader()
 	
 	private override init() {
+		
+		documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+		
+		core = GameCore()
+		core.workingDirectory = documentDirectory
+		
 		super.init()
 	}
 	
@@ -104,13 +102,6 @@ public class GameLoader: NSObject {
 		}
 	}
 	
-	func createCore() -> GameCore {
-		let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let core = GameCore()
-		core.workingDirectory = documentDirectory
-		return core
-	}
-	
 	func requestGames(_ success: @escaping (([Game]) -> Void), failure: @escaping ((Error) -> Void)) {
 		
 		let replyHandler: (([String: Any]) -> Void) = { (response) in
@@ -128,10 +119,7 @@ public class GameLoader: NSObject {
 	func loadGame(_ game: Game, _ success: @escaping ((GameCore) -> Void), failure: @escaping ((Error) -> Void)) {
 		
 		gameResponse = { [unowned self] (dataPath) in
-			
-			let core = self.createCore()
-			self.core = core
-			core.loadFile(atPath: dataPath, success: { (core) in
+			self.core.loadFile(atPath: dataPath, success: { (core) in
 				UserDefaults.standard.lastPlayed = game
 				success(core)
 			}, failure: failure)

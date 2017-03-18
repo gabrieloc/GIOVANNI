@@ -60,11 +60,6 @@ class LibraryController: WKInterfaceController {
 //		if let game = UserDefaults.standard.lastPlayed {
 //			presentGame(game)
 //		}
-		
-		let loader = GameLoader.shared
-		if loader.core != nil {
-			loader.core = nil
-		}
 	}
 	
 	func reloadGames() {

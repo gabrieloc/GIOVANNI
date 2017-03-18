@@ -54,11 +54,23 @@ public:
 	uint32_t *videoBuffer;
 	uint32_t *unusedBuffer;
 	NSTimer *updateTimer;
+	BOOL running;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	if (self) {
+		videoBuffer = (uint32_t *)malloc(kScreenWidth * kScreenHeight * 4);
+		unusedBuffer = (uint32_t *)malloc(2064 * 2 * 4);
+	}
+	return self;
 }
 
 - (void)dealloc
 {
-	[self stopEmulation];
+	free(videoBuffer);
+	free(unusedBuffer);
 }
 
 - (void)loadFileAtPath:(NSString *)path success:(void (^)(GameCore * _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
@@ -87,14 +99,10 @@ public:
 - (void)startEmulation
 {
 	// Using a Timer instead to trigger the game loop is slower, but ensures all frames are rendered
-	// TODO use enableFrameSkip property to switch betwen timer and NSThread
 //	NSTimeInterval interval = 1 / (frameInterval * 0.5);
 //	updateTimer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(runGameLoop) userInfo:nil repeats:YES];
 
-	videoBuffer = (uint32_t *)malloc(kScreenWidth * kScreenHeight * 4);
-	unusedBuffer = (uint32_t *)malloc(2064 * 2 * 4);
-	
-	_paused = NO;
+	running = YES;
 	gameCoreThread = [[NSThread alloc] initWithTarget:self selector:@selector(runGameLoop) object:nil];
 	gameCoreThread.name = @"Giovanni Game Core";
 	gameCoreThread.qualityOfService = NSQualityOfServiceUserInteractive;
@@ -107,12 +115,12 @@ public:
 	
 	OESetThreadRealtime(1. / (1. * frameInterval), .007, .03);
 	
-	while (!_paused) { @autoreleasepool {
+	while (running) {
+		@autoreleasepool {
 		size_t samples = 2064;
-
+		
 		while (gb.runFor((gambatte::uint_least32_t *)videoBuffer, kScreenWidth,
-						 (gambatte::uint_least32_t *)unusedBuffer, samples) == -1 && !_paused) {
-			
+						 (gambatte::uint_least32_t *)unusedBuffer, samples) == -1 && running) {
 		}
 		
 		NSTimeInterval advance = 1.0 / (1. * frameInterval);
@@ -131,28 +139,27 @@ public:
 		if (_didRender != nil) {
 			_didRender(videoBuffer);
 		}
-	}}
+	}
+}
 }
 
 - (void)stopEmulation
 {
-	if (gameCoreThread == nil) {
-		return;
-	}
-	
 	gb.saveSavedata();
-	free(videoBuffer);
-	free(unusedBuffer);
-
 	//	[updateTimer invalidate];
-	_paused = YES;
+	running = NO;
 	[gameCoreThread cancel];
-	gameCoreThread = nil;
 }
 
 - (void)resetEmulation
 {
 	[self stopEmulation];
+	
+	free(videoBuffer);
+	free(unusedBuffer);
+	videoBuffer = (uint32_t *)malloc(kScreenWidth * kScreenHeight * 4);
+	unusedBuffer = (uint32_t *)malloc(2064 * 2 * 4);
+	
 	gb.reset();
 	[self startEmulation];
 }
@@ -179,8 +186,7 @@ public:
 {
 	gb.saveSavedata();
 	gb.selectState(slot);
-	int saved = gb.saveState(0, 0);
-	if (saved != 1) {
+	if (!gb.saveState((gambatte::uint_least32_t *)videoBuffer, kScreenWidth)) {
 		NSLog(@"Error saving to slot %@", @(slot));
 	}
 }
