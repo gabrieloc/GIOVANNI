@@ -170,6 +170,7 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.focus()
 
 		if let core = loader.core {
+			core.load(fromSlot: 0)
 //			core.paused = false
 		}
 	}
@@ -181,6 +182,7 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.resignFocus()
 		
 		if let core = loader.core {
+			core.save(toSlot: 0)
 //			core.paused = true;
 		}
 	}
