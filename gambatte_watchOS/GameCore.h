@@ -57,6 +57,7 @@ static int const kScreenHeight = 144;
 @property (strong, nonatomic) NSURL *workingDirectory;
 @property (nonatomic, strong) void (^didRender)(uint32_t *);
 @property (nonatomic) uint32_t *activeInput;
+@property (nonatomic) BOOL paused;
 
 @property (nonatomic) BOOL enableFrameSkip;
 
