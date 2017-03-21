@@ -48,6 +48,10 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 	
 		prepareSession()
+		
+		if let documentsDirectory = documentsDirectory {
+			print("ROM URL: \(documentsDirectory)")
+		}
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
