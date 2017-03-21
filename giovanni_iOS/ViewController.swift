@@ -49,7 +49,7 @@ class ViewController: UIViewController {
 	
 		prepareSession()
 		
-		if let documentsDirectory = documentsDirectory {
+		if let documentsDirectory = FileManager.default.documentsDirectory {
 			print("ROM URL: \(documentsDirectory)")
 		}
 	}
@@ -58,19 +58,16 @@ class ViewController: UIViewController {
 		return .lightContent
 	}
 	
-	var documentsDirectory: URL? {
-		let directory: FileManager.SearchPathDirectory = .documentDirectory
-		return FileManager.default.urls(for: directory, in: .userDomainMask).first as URL?
-	}
+
 
 	func loadGames() -> [[String: String]]? {
 
-		guard let documentsDirectory = documentsDirectory else {
+		guard let documentsDirectory = FileManager.default.documentsDirectory else {
 			return nil
 		}
 		
 		do {
-			let URLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+			let URLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
 			return encodeFiles(with: URLs)
 		} catch {
 			return nil

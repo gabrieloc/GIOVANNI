@@ -39,8 +39,8 @@ public struct Game {
 	public let path: String
 	
 	public init?(dictionary: [String: Any]) {
-		guard let name = dictionary["name"] as? String,
-		 let path = dictionary["path"] as? String
+		guard let name = dictionary["name"] as? String, !name.isEmpty,
+		 let path = dictionary["path"] as? String, !path.isEmpty
 			else {
 				return nil
 		}

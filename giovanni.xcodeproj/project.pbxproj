@@ -164,6 +164,7 @@
 		B2DF6DA01E614C69001A811B /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF6D9F1E614C69001A811B /* GameRow.swift */; };
 		B2DF6DA21E619D16001A811B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DC85111E5DC6CC00CC1028 /* Interface.storyboard */; };
 		B2FC9BDE1E608AD5004D19C0 /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FC9BDD1E608AD5004D19C0 /* GameplayController.swift */; };
+		B2FCD4571E813EE900718BCF /* FileManagerAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FCD4561E813EE900718BCF /* FileManagerAdditions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +410,7 @@
 		B2DF6DD21E61C3D3001A811B /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = ../gambatte_watchOS/Game.swift; sourceTree = "<group>"; };
 		B2DF6DD31E61C3D3001A811B /* GameLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLoader.swift; path = ../gambatte_watchOS/GameLoader.swift; sourceTree = "<group>"; };
 		B2FC9BDD1E608AD5004D19C0 /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
+		B2FCD4561E813EE900718BCF /* FileManagerAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerAdditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -726,6 +728,7 @@
 			children = (
 				B2DC84FD1E5DC6CB00CC1028 /* AppDelegate.swift */,
 				B2DC84FF1E5DC6CB00CC1028 /* ViewController.swift */,
+				B2FCD4561E813EE900718BCF /* FileManagerAdditions.swift */,
 				B2DC85011E5DC6CB00CC1028 /* Main.storyboard */,
 				B2DC85041E5DC6CB00CC1028 /* Assets.xcassets */,
 				B2DC85061E5DC6CB00CC1028 /* LaunchScreen.storyboard */,
@@ -1086,6 +1089,7 @@
 			files = (
 				B2DC85001E5DC6CB00CC1028 /* ViewController.swift in Sources */,
 				B2DC84FE1E5DC6CB00CC1028 /* AppDelegate.swift in Sources */,
+				B2FCD4571E813EE900718BCF /* FileManagerAdditions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -56,6 +56,7 @@ class LibraryController: WKInterfaceController {
 	override func willActivate() {
 		super.willActivate()
 
+		print("WATCH ROM URL:, \(GameLoader.shared.cacheURL!.absoluteString)")
 		// Auto-loads the last played game
 //		if let game = UserDefaults.standard.lastPlayed {
 //			presentGame(game)
