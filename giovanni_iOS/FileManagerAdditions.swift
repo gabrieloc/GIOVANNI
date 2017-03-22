@@ -49,7 +49,6 @@ extension FileManager {
 			case .invalidExtension:
 				return "Not a valid ROM file"
 			}
-			return nil
 		}
 	}
 	
