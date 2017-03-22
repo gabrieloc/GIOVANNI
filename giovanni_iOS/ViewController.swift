@@ -75,11 +75,12 @@ class ViewController: UIViewController {
 	}
 	
 	func encodeFiles(with URLs: [URL]) -> [[String: String]] {
-		return URLs.reduce([[String: String]]()) {
+		return URLs.filter { $0.pathExtension.isValidROMExtension }.reduce([[String: String]]()) {
 			
 			var games = $0.0
-			
+
 			let path = $0.1
+
 			let name = path
 				.lastPathComponent
 				.components(separatedBy: ".")
@@ -144,6 +145,11 @@ extension ViewController: WCSessionDelegate {
 		guard let games = loadGames() else {
 			return
 		}
+		
+		if WCSession.default().activationState != .activated {
+			prepareSession()
+		}
+		
 		WCSession.default().sendMessage(["games": games], replyHandler: nil, errorHandler: nil)
 	}
 }

@@ -16,6 +16,18 @@ extension String {
 
 extension FileManager {
 	
+	enum FileError: LocalizedError {
+		case invalidExtension
+		
+		public var errorDescription: String? {
+			switch self {
+			case .invalidExtension:
+				return "Not a valid ROM file"
+			}
+			return nil
+		}
+	}
+	
 	var documentsDirectory: URL? {
 		let directory: FileManager.SearchPathDirectory = .documentDirectory
 		return FileManager.default.urls(for: directory, in: .userDomainMask).first as URL?
@@ -24,7 +36,7 @@ extension FileManager {
 	func receiveFile(at fileURL: URL, completion: ((String) -> Bool), failure: ((Error) -> Bool)) -> Bool {
 		
 		guard fileURL.pathExtension.isValidROMExtension else {
-			return false
+			return failure(FileError.invalidExtension)
 		}
 		
 		do {

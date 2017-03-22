@@ -137,7 +137,11 @@ public class GameLoader: NSObject {
 	func cachedURL(for game: Game) -> URL? {
 		do {
 			let contents = try FileManager.default.contentsOfDirectory(at: cacheURL!, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsHiddenFiles])
-			return contents.first(where: { $0.lastPathComponent.contains(game.name) })
+			return contents.first(where: { url -> Bool in
+				let matchingName = url.lastPathComponent.contains(game.name)
+				let matchingExtension = (url.pathExtension == URL(string: game.path)!.pathExtension)// .isValidROMExtension
+				return matchingName && matchingExtension
+			})
 		} catch {
 			return nil
 		}
@@ -157,7 +161,7 @@ public class GameLoader: NSObject {
 
 extension GameLoader: WCSessionDelegate {
 	
-	public func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+	public func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
 		if let games = createGames(from: message), let handler = gamesUpdated {
 			handler(games)
 		}
