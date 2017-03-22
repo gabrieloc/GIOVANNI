@@ -71,7 +71,9 @@ public class GameLoader: NSObject {
 	
 	var activationCompletion: ((Error?) -> Void)?
 	
-	var gameResponse: ((String) -> Void)?
+	fileprivate var gameResponse: ((String) -> Void)?
+	
+	var gamesUpdated: (([Game]) -> Void)?
 	
 	static let shared = GameLoader()
 	
@@ -104,13 +106,12 @@ public class GameLoader: NSObject {
 	
 	func requestGames(_ success: @escaping (([Game]) -> Void), failure: @escaping ((Error) -> Void)) {
 		
-		let replyHandler: (([String: Any]) -> Void) = { (response) in
-			guard let gamesRaw = response["games"] as? [[String: Any]] else {
+		let replyHandler: (([String: Any]) -> Void) = { [unowned self] (response) in
+			if let games = self.createGames(from: response) {
+				success(games)
+			} else {
 				failure(GameLoaderError(reason: "bad response"))
-				return
 			}
-			let games = gamesRaw.flatMap { Game(dictionary: $0) }
-			success(games)
 		}
 
 		session.sendMessage(["requestGames": 1], replyHandler: replyHandler, errorHandler: failure)
@@ -145,9 +146,22 @@ public class GameLoader: NSObject {
 	var cacheURL: URL? {
 		return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 	}
+	
+	func createGames(from response: [String: Any]) -> [Game]? {
+		guard let gamesRaw = response["games"] as? [[String: Any]] else {
+			return nil
+		}
+		return gamesRaw.flatMap { Game(dictionary: $0) }
+	}
 }
 
 extension GameLoader: WCSessionDelegate {
+	
+	public func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+		if let games = createGames(from: message), let handler = gamesUpdated {
+			handler(games)
+		}
+	}
 	
 	public func session(_ session: WCSession, didReceive file: WCSessionFile) {
 		print("received \(file)")

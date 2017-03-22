@@ -46,21 +46,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 		
-		let rootController = UIApplication.shared.keyWindow?.rootViewController
+		guard let rootController = UIApplication.shared.keyWindow?.rootViewController as? ViewController else {
+			return false
+		}
 		
 		return FileManager.default.receiveFile(at: url, completion: { (name) -> Bool in
 			let alert = UIAlertController(title: "Received \(name)",
-				message: "Hit refresh on your watch.",
+				message: "",
 				preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-			rootController?.present(alert, animated: true, completion: nil)
+			rootController.present(alert, animated: true, completion: nil)
+			rootController.sendGamesList()
 			return true
 		}) { (error) -> Bool in
 			let alert = UIAlertController(title: "Error Receiving File",
 			                              message: error.localizedDescription,
 			                              preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-			rootController?.present(alert, animated: true, completion: nil)
+			rootController.present(alert, animated: true, completion: nil)
 			return false
 		}
 	}

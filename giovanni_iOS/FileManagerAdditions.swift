@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension String {
+	var isValidROMExtension: Bool {
+		return ["gb", "gbc", "zip"].contains(self)
+	}
+}
+
 extension FileManager {
 	
 	var documentsDirectory: URL? {
@@ -16,6 +22,10 @@ extension FileManager {
 	}
 	
 	func receiveFile(at fileURL: URL, completion: ((String) -> Bool), failure: ((Error) -> Bool)) -> Bool {
+		
+		guard fileURL.pathExtension.isValidROMExtension else {
+			return false
+		}
 		
 		do {
 			let name = fileURL.lastPathComponent

@@ -140,4 +140,10 @@ extension ViewController: WCSessionDelegate {
 		}
 	}
 	
+	func sendGamesList() {
+		guard let games = loadGames() else {
+			return
+		}
+		WCSession.default().sendMessage(["games": games], replyHandler: nil, errorHandler: nil)
+	}
 }
