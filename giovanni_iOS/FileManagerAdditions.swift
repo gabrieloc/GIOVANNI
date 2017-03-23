@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  FileManagerAdditions.swift
 //  GIOVANNI
 //
 //  Copyright (c) <2017>, Gabriel O'Flaherty-Chan
@@ -33,23 +33,43 @@
 
 import Foundation
 
-public struct Game {
+extension String {
+	var isValidROMExtension: Bool {
+		return ["gb", "gbc", "zip"].contains(self)
+	}
+}
+
+extension FileManager {
 	
-	public let name: String
-	public let path: String
-	
-	public init?(dictionary: [String: Any]) {
-		guard let name = dictionary["name"] as? String, !name.isEmpty,
-		 let path = dictionary["path"] as? String, !path.isEmpty
-			else {
-				return nil
-		}
+	enum FileError: LocalizedError {
+		case invalidExtension
 		
-		self.name = name
-		self.path = path
+		public var errorDescription: String? {
+			switch self {
+			case .invalidExtension:
+				return "Not a valid ROM file"
+			}
+		}
 	}
 	
-	var serialized: [String: Any] {
-		return ["name": name, "path": path]
+	var documentsDirectory: URL? {
+		let directory: FileManager.SearchPathDirectory = .documentDirectory
+		return FileManager.default.urls(for: directory, in: .userDomainMask).first as URL?
+	}
+	
+	func receiveFile(at fileURL: URL, completion: ((String) -> Bool), failure: ((Error) -> Bool)) -> Bool {
+		
+		guard fileURL.pathExtension.isValidROMExtension else {
+			return failure(FileError.invalidExtension)
+		}
+		
+		do {
+			let name = fileURL.lastPathComponent
+			let destinationPath = documentsDirectory!.appendingPathComponent(name)
+			try FileManager.default.moveItem(at: fileURL, to: destinationPath)
+			return completion(name)
+		} catch (let error) {
+			return failure(error)
+		}
 	}
 }

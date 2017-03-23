@@ -49,7 +49,7 @@ class ViewController: UIViewController {
 	
 		prepareSession()
 		
-		if let documentsDirectory = documentsDirectory {
+		if let documentsDirectory = FileManager.default.documentsDirectory {
 			print("ROM URL: \(documentsDirectory)")
 		}
 	}
@@ -58,19 +58,16 @@ class ViewController: UIViewController {
 		return .lightContent
 	}
 	
-	var documentsDirectory: URL? {
-		let directory: FileManager.SearchPathDirectory = .documentDirectory
-		return FileManager.default.urls(for: directory, in: .userDomainMask).first as URL?
-	}
+
 
 	func loadGames() -> [[String: String]]? {
 
-		guard let documentsDirectory = documentsDirectory else {
+		guard let documentsDirectory = FileManager.default.documentsDirectory else {
 			return nil
 		}
 		
 		do {
-			let URLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+			let URLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
 			return encodeFiles(with: URLs)
 		} catch {
 			return nil
@@ -78,11 +75,12 @@ class ViewController: UIViewController {
 	}
 	
 	func encodeFiles(with URLs: [URL]) -> [[String: String]] {
-		return URLs.reduce([[String: String]]()) {
+		return URLs.filter { $0.pathExtension.isValidROMExtension }.reduce([[String: String]]()) {
 			
 			var games = $0.0
-			
+
 			let path = $0.1
+
 			let name = path
 				.lastPathComponent
 				.components(separatedBy: ".")
@@ -143,4 +141,15 @@ extension ViewController: WCSessionDelegate {
 		}
 	}
 	
+	func sendGamesList() {
+		guard let games = loadGames() else {
+			return
+		}
+		
+		if WCSession.default().activationState != .activated {
+			prepareSession()
+		}
+		
+		WCSession.default().sendMessage(["games": games], replyHandler: nil, errorHandler: nil)
+	}
 }

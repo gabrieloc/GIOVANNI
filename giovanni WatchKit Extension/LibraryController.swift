@@ -42,6 +42,7 @@ class LibraryController: WKInterfaceController {
 	var games: [Game]? {
 		didSet {
 			if let games = games {
+				noGamesFound = games.count == 0
 				populateTable(with: games)
 			}
 		}
@@ -51,15 +52,31 @@ class LibraryController: WKInterfaceController {
 	
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
+		
 		reloadGames()
 	}
+	
 	override func willActivate() {
 		super.willActivate()
 
+		GameLoader.shared.gamesUpdated = { [unowned self] games in
+			self.games = games
+		}
+		
+		guard let cacheURL = GameLoader.shared.cacheURL else {
+			return
+		}
+		print("WATCH ROM URL: , \(cacheURL.absoluteString)")
 		// Auto-loads the last played game
 //		if let game = UserDefaults.standard.lastPlayed {
 //			presentGame(game)
 //		}
+	}
+	
+	override func didDeactivate() {
+		super.didDeactivate()
+		
+		GameLoader.shared.gamesUpdated = nil
 	}
 	
 	func reloadGames() {
@@ -68,7 +85,6 @@ class LibraryController: WKInterfaceController {
 		populateTable(with: [])
 		
 		let success: (([Game]) -> Void) = { [unowned self] games in
-			self.noGamesFound = games.count == 0
 			self.games = games
 		}
 		
