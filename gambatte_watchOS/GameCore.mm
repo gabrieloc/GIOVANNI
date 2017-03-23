@@ -70,9 +70,11 @@ public:
 	NSURL *batterySavesDirectory = _workingDirectory;
 	
 	[[NSFileManager defaultManager] createDirectoryAtURL:batterySavesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+	gb.selectState(0);
 	gb.setSaveDir([[batterySavesDirectory path] UTF8String]);
 	gb.setInputGetter(&GetInput);
-	if (gb.load([path UTF8String]) != 0) {
+	int result = gb.load([path UTF8String]);
+	if (result != 0) {
 		NSMutableDictionary *errorUserInfo = [NSMutableDictionary dictionary];
 		NSString *errorMessage = [NSString stringWithFormat:@"Error loading at %@", path];
 		errorUserInfo[NSLocalizedDescriptionKey] = errorMessage;
@@ -140,11 +142,11 @@ public:
 	}
 	
 	gb.saveSavedata();
+	_paused = YES;
 	free(videoBuffer);
 	free(unusedBuffer);
 
 	//	[updateTimer invalidate];
-	_paused = YES;
 	[gameCoreThread cancel];
 	gameCoreThread = nil;
 }

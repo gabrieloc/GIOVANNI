@@ -196,7 +196,6 @@ class GameplayController: WKInterfaceController {
 			return
 		}
 		
-		let snapshot = loader.core!.createSnapshot(from: buffer)
 		
 		// compare before updating. Not sure if faster.
 //		if let lhs = lastSnapshot, let rhs = snapshot, lhs.equalPixels(to: rhs) {
@@ -204,8 +203,10 @@ class GameplayController: WKInterfaceController {
 //		}
 //		lastSnapshot = snapshot
 		
-		DispatchQueue.main.async {
-			self.image.setImage(snapshot)
+		DispatchQueue.main.async { [weak self] in
+			guard let s = self else { return }
+			let snapshot = s.loader.core!.createSnapshot(from: buffer)
+			s.image.setImage(snapshot)
 		}
 		tick = 0
 	}
