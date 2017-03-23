@@ -19,7 +19,7 @@ If you are still having issues, please following the tutorial provided by [Redmo
 
 Games are loaded from your iPhone's documents directory. In iTunes, drop `.gb`, `.gbc`, or `zip` files into the Giovanni app documents folder, and they'll show up automatically on your Apple Watch. When you play a game for the first time, it'll download to your watch and get cached in the watch's documents directory. Subsequent loads are immediate.
 
-UPDATE: https://github.com/gabrieloc/GIOVANNI/pull/9 adds the ability for Giovanni to treat open ROMs natively, allowing you to bypass iTunes entirely. Please refer to that Pull Request for info.
+UPDATE: Giovanni can open ROMs natively, allowing you to bypass iTunes entirely. [More info](https://github.com/gabrieloc/GIOVANNI/pull/9).
 
 Emulator saving and loading is automatic, and happens whenever the app gets closed/inactivated or opened/activated. In-game saving and loading is completely separate. If for some reason the emulator save gets corrupted, force-touching the screen will bring up the option to reset the emulator, allowing you to resume from your in-game save.
 
