@@ -63,7 +63,10 @@ class LibraryController: WKInterfaceController {
 			self.games = games
 		}
 		
-		print("WATCH ROM URL:, \(GameLoader.shared.cacheURL!.absoluteString)")
+		guard let cacheURL = GameLoader.shared.cacheURL else {
+			return
+		}
+		print("WATCH ROM URL: , \(cacheURL.absoluteString)")
 		// Auto-loads the last played game
 //		if let game = UserDefaults.standard.lastPlayed {
 //			presentGame(game)

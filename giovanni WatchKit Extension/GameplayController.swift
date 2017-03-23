@@ -210,7 +210,9 @@ class GameplayController: WKInterfaceController {
 //		}
 //		lastSnapshot = snapshot
 		
-		self.image.setImage(snapshot)
+		DispatchQueue.main.async {
+			self.image.setImage(snapshot)
+		}
 		tick = 0
 	}
 	
