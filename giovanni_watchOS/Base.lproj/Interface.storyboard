@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12113" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12078"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12027"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--GamePlay-->
@@ -13,20 +13,7 @@
             <objects>
                 <controller identifier="GamePlay" id="AgC-eL-Hgc" customClass="GameplayController" customModule="giovanni_WatchKit_Extension">
                     <items>
-                        <imageView width="1" height="0.80000000000000004" alignment="left" image="loading" contentMode="scaleAspectFill" id="aJl-Oj-bNg">
-                            <gestureRecognizers>
-                                <panGestureRecognizer id="0MQ-NG-tvP">
-                                    <connections>
-                                        <action selector="panUpdated:" destination="AgC-eL-Hgc" id="CA6-VH-l1R"/>
-                                    </connections>
-                                </panGestureRecognizer>
-                                <tapGestureRecognizer id="eXU-ai-JEc">
-                                    <connections>
-                                        <action selector="tapUpdated:" destination="AgC-eL-Hgc" id="qqH-hx-H41"/>
-                                    </connections>
-                                </tapGestureRecognizer>
-                            </gestureRecognizers>
-                        </imageView>
+                        <spriteKitScene height="0.80000000000000004" alignment="left" id="ELq-fe-WSa"/>
                         <group width="1" height="0.20000000000000001" alignment="left" id="OfT-pQ-dwT">
                             <items>
                                 <group width="0.10000000000000001" height="1" alignment="left" layout="vertical" spacing="0.0" id="jHt-DP-AmP">
@@ -77,7 +64,7 @@ SL</string>
                     <connections>
                         <outlet property="ALabel" destination="e8e-tB-5Zv" id="gmP-Xj-kCc"/>
                         <outlet property="DPadLabel" destination="cVh-ps-Gkz" id="oed-H8-hIw"/>
-                        <outlet property="image" destination="aJl-Oj-bNg" id="AY5-GI-9Ll"/>
+                        <outlet property="scene" destination="ELq-fe-WSa" id="8Pd-b5-QQL"/>
                     </connections>
                 </controller>
             </objects>

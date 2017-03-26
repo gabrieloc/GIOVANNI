@@ -32,6 +32,7 @@
 //
 
 import WatchKit
+import SpriteKit
 import Gambatte_watchOS
 
 extension CGPoint {
@@ -41,7 +42,8 @@ extension CGPoint {
 }
 
 class GameplayController: WKInterfaceController {
-	@IBOutlet var image: WKInterfaceImage!
+	@IBOutlet var scene: WKInterfaceSKScene!
+	let spriteNode = SKSpriteNode(imageNamed: "loading")
 	
 	var panOrigin: CGPoint?
 	let deadzone: CGFloat = 1
@@ -138,6 +140,16 @@ class GameplayController: WKInterfaceController {
 			return
 		}
 		
+		var size = contentFrame.size
+		size.height *= 0.8
+		let scene = SKScene(size: size)
+
+		spriteNode.size = size
+		spriteNode.position = CGPoint(x: size.width * 0.5,
+		                              y: size.height * 0.5)
+		scene.addChild(spriteNode)
+		self.scene.presentScene(scene)
+		
 		let success: ((GameCore) -> Void) = { [unowned self] (core) in
 			core.didRender = { [weak self] buffer in
 				guard let s = self else {
@@ -195,18 +207,17 @@ class GameplayController: WKInterfaceController {
 		if tick > refreshRate || loader.core == nil {
 			return
 		}
+
+		let count = 160 * 144 * MemoryLayout<UInt32>.size
+		let bufferPointer =  UnsafeBufferPointer(start: buffer, count: count)
+		let data = Data(buffer: bufferPointer)
 		
-		let snapshot = loader.core!.createSnapshot(from: buffer)
+//		var bytes = [UInt8](repeating: 0, count: count)
+//		data.copyBytes(to: &bytes, count: count)
+		let texture = SKTexture(data: data, size: spriteNode.size, flipped: true)// rowLength: 160 * UInt32(count), alignment: 0)
+		texture.filteringMode = .nearest
+		self.spriteNode.texture = texture
 		
-		// compare before updating. Not sure if faster.
-//		if let lhs = lastSnapshot, let rhs = snapshot, lhs.equalPixels(to: rhs) {
-//			return
-//		}
-//		lastSnapshot = snapshot
-		
-		DispatchQueue.main.async {
-			self.image.setImage(snapshot)
-		}
 		tick = 0
 	}
 	
