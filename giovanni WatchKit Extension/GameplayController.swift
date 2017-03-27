@@ -208,16 +208,7 @@ class GameplayController: WKInterfaceController {
 			return
 		}
 
-		let size = CGSize(width: Int(kScreenWidth), height: Int(kScreenHeight))
-		let count = Int(size.width * size.height) * MemoryLayout<UInt32>.size
-		let bufferPointer =  UnsafeBufferPointer(start: buffer, count: count)
-		let data = Data(buffer: bufferPointer)
-		
-//		var bytes = [UInt8](repeating: 0, count: count)
-//		data.copyBytes(to: &bytes, count: count)
-		let texture = SKTexture(data: data, size: size, flipped: true)// rowLength: 160 * UInt32(count), alignment: 0)
-		texture.filteringMode = .nearest
-		
+		let texture = createTexture(from: buffer)
 		self.spriteNode.texture = texture
 		
 		tick = 0
