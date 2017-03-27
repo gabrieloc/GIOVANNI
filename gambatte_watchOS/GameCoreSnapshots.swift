@@ -72,10 +72,24 @@ extension GameplayController {
 	}
 	
 	fileprivate func createData(from buffer: UnsafeMutablePointer<UInt32>) -> Data {
+		
 		let count = Int(kScreenHeight * kScreenWidth) * MemoryLayout<UInt32>.size
 		let bufferPointer =  UnsafeBufferPointer(start: buffer, count: count)
-		return Data(buffer: bufferPointer)
+		let data = Data(buffer: bufferPointer)
+		
+		var bytes = [UInt8](repeating: 0, count: count)
+		data.copyBytes(to: &bytes, count: count)
+		
+		var mdata = data
+		mdata.withUnsafeMutableBytes { (ptr: UnsafeMutablePointer<UInt8>) in
+			for i in stride(from: 0, to: count, by: 4) {
+				swap(&ptr[i], &ptr[i+2])
+			}
+		}
+		return mdata
 	}
+
+	// Use this for debugging. Will output a file to the app's documents directory.
 	
 	func logBuffer(_ buffer: UnsafeMutablePointer<UInt32>) {
 		
