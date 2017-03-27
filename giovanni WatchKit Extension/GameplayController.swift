@@ -130,7 +130,7 @@ class GameplayController: WKInterfaceController {
 	let loader = GameLoader.shared
 	
 	var tick = 0
-	let refreshRate = 20;
+	let refreshRate = 5;
 	
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
@@ -204,18 +204,20 @@ class GameplayController: WKInterfaceController {
 	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
 		
 		tick += 1
-		if tick > refreshRate || loader.core == nil {
+		if tick < refreshRate || loader.core == nil {
 			return
 		}
 
-		let count = 160 * 144 * MemoryLayout<UInt32>.size
+		let size = CGSize(width: Int(kScreenWidth), height: Int(kScreenHeight))
+		let count = Int(size.width * size.height) * MemoryLayout<UInt32>.size
 		let bufferPointer =  UnsafeBufferPointer(start: buffer, count: count)
 		let data = Data(buffer: bufferPointer)
 		
 //		var bytes = [UInt8](repeating: 0, count: count)
 //		data.copyBytes(to: &bytes, count: count)
-		let texture = SKTexture(data: data, size: spriteNode.size, flipped: true)// rowLength: 160 * UInt32(count), alignment: 0)
+		let texture = SKTexture(data: data, size: size, flipped: true)// rowLength: 160 * UInt32(count), alignment: 0)
 		texture.filteringMode = .nearest
+		
 		self.spriteNode.texture = texture
 		
 		tick = 0

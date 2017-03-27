@@ -13,7 +13,20 @@
             <objects>
                 <controller identifier="GamePlay" id="AgC-eL-Hgc" customClass="GameplayController" customModule="giovanni_WatchKit_Extension">
                     <items>
-                        <spriteKitScene height="0.80000000000000004" alignment="left" id="ELq-fe-WSa"/>
+                        <spriteKitScene height="0.80000000000000004" alignment="left" id="ELq-fe-WSa">
+                            <gestureRecognizers>
+                                <panGestureRecognizer id="fON-GL-rsc">
+                                    <connections>
+                                        <action selector="panUpdated:" destination="AgC-eL-Hgc" id="ZVb-df-Eb3"/>
+                                    </connections>
+                                </panGestureRecognizer>
+                                <tapGestureRecognizer id="dCs-LC-B2n">
+                                    <connections>
+                                        <action selector="tapUpdated:" destination="AgC-eL-Hgc" id="Mdf-ba-AUm"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </spriteKitScene>
                         <group width="1" height="0.20000000000000001" alignment="left" id="OfT-pQ-dwT">
                             <items>
                                 <group width="0.10000000000000001" height="1" alignment="left" layout="vertical" spacing="0.0" id="jHt-DP-AmP">
