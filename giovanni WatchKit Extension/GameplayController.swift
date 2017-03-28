@@ -181,10 +181,10 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.delegate = self
 		crownSequencer.focus()
 
-		if let core = loader.core {
-			core.load(fromSlot: 0)
-//			core.paused = false
-		}
+		// Too buggy
+//		if let core = loader.core, core.isLoaded {
+//			core.load(fromSlot: 0)
+//		}
 	}
 	
 	override func didDeactivate() {
@@ -193,10 +193,10 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.delegate = nil
 		crownSequencer.resignFocus()
 		
-		if let core = loader.core {
-			core.save(toSlot: 0)
-//			core.paused = true;
-		}
+		// Too buggy
+//		if let core = loader.core, core.isLoaded {
+//			core.save(toSlot: 0)
+//		}
 	}
 
 	var lastSnapshot: UIImage?
