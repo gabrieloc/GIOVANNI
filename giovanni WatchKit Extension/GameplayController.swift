@@ -209,8 +209,10 @@ class GameplayController: WKInterfaceController {
 		}
 
 		let texture = createTexture(from: buffer)
-		self.spriteNode.texture = texture
-		
+		texture.preload {
+			self.spriteNode.texture = texture
+		}
+
 		tick = 0
 	}
 	
