@@ -79,14 +79,8 @@ extension GameplayController {
 		
 		var bytes = [UInt8](repeating: 0, count: count)
 		data.copyBytes(to: &bytes, count: count)
-		
-		var mdata = data
-		mdata.withUnsafeMutableBytes { (ptr: UnsafeMutablePointer<UInt8>) in
-			for i in stride(from: 0, to: count, by: 4) {
-				swap(&ptr[i], &ptr[i+2])
-			}
-		}
-		return mdata
+
+		return data
 	}
 
 	// Use this for debugging. Will output a file to the app's documents directory.
