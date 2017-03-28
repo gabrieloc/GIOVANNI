@@ -85,6 +85,22 @@ class GameplayController: WKInterfaceController {
 	@IBAction func selectSelected() { pressInputOnce(.select) }
 	@IBAction func BSelected()		{ pressInputOnce(.B) }
 	
+	@IBAction func loadSelected() {
+		guard let core = loader.core else {
+			return
+		}
+		core.resetEmulation()
+		core.load(fromSlot: 0)
+	}
+
+	@IBAction func saveSelected() {
+		guard let core = loader.core else {
+			return
+		}
+		core.resetEmulation()
+		loader.core?.save(toSlot: 0)
+	}
+
 	@IBAction func resetSelected() {
 		loader.core?.resetEmulation()
 	}
@@ -192,6 +208,8 @@ class GameplayController: WKInterfaceController {
 		
 		crownSequencer.delegate = nil
 		crownSequencer.resignFocus()
+
+		loader.core?.saveSavedata()
 		
 		// Too buggy
 //		if let core = loader.core, core.isLoaded {

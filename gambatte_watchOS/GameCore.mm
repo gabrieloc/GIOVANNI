@@ -106,7 +106,7 @@ public:
 	
 	OESetThreadRealtime(1. / (1. * frameInterval), .007, .03);
 	
-	while (!_paused) { @autoreleasepool {
+	while (!gameCoreThread.isCancelled) { @autoreleasepool {
 		size_t samples = 2064;
 
 		while (gb.runFor((gambatte::uint_least32_t *)videoBuffer, kScreenWidth,
@@ -172,6 +172,11 @@ public:
 - (uint32_t *)activeInput
 {
 	return activeInput;
+}
+
+- (void)saveData
+{
+	gb.saveSavedata();
 }
 
 - (void)saveToSlot:(NSInteger)slot
