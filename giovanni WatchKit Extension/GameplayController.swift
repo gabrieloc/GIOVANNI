@@ -43,8 +43,8 @@ extension CGPoint {
 
 class GameplayController: WKInterfaceController {
 	@IBOutlet var scene: WKInterfaceSKScene!
-	let spriteNode = SKSpriteNode(imageNamed: "loading")
-	
+	var gameScene: GameScene?
+
 	var panOrigin: CGPoint?
 	let deadzone: CGFloat = 1
 	
@@ -146,7 +146,7 @@ class GameplayController: WKInterfaceController {
 	let loader = GameLoader.shared
 	
 	var tick = 0
-	let refreshRate = 5;
+	let refreshRate = 1;
 	
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
@@ -158,14 +158,10 @@ class GameplayController: WKInterfaceController {
 		
 		var size = contentFrame.size
 		size.height *= 0.8
-		let scene = SKScene(size: size)
-
-		spriteNode.size = size
-		spriteNode.position = CGPoint(x: size.width * 0.5,
-		                              y: size.height * 0.5)
-		scene.addChild(spriteNode)
+		let scene = GameScene(size: size)
 		self.scene.presentScene(scene)
-		
+		self.gameScene = scene
+
 		let success: ((GameCore) -> Void) = { [unowned self] (core) in
 			core.didRender = { [weak self] buffer in
 				guard let s = self else {
@@ -210,7 +206,7 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.resignFocus()
 
 		loader.core?.saveSavedata()
-		
+
 		// Too buggy
 //		if let core = loader.core, core.isLoaded {
 //			core.save(toSlot: 0)
@@ -220,18 +216,9 @@ class GameplayController: WKInterfaceController {
 	var lastSnapshot: UIImage?
 	
 	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
-		
-		tick += 1
-		if tick < refreshRate || loader.core == nil {
-			return
-		}
-
-		let texture = createTexture(from: buffer)
-		texture.preload {
-			self.spriteNode.texture = texture
-		}
-
-		tick = 0
+//		DispatchQueue.main.async {
+			self.gameScene?.buffer = buffer
+//		}
 	}
 	
 	// MARK: Input

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B21806ED1E8ABF5700567184 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21806EC1E8ABF5700567184 /* GameScene.swift */; };
 		B21D7CEB1E6C515900002F89 /* gambatte_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B21D7CE91E6C515900002F89 /* gambatte_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B21D7CEE1E6C515900002F89 /* Gambatte_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21D7CE71E6C515900002F89 /* Gambatte_watchOS.framework */; };
 		B21D7CEF1E6C515900002F89 /* Gambatte_watchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B21D7CE71E6C515900002F89 /* Gambatte_watchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -246,6 +247,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B21806EC1E8ABF5700567184 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		B21D7CE71E6C515900002F89 /* Gambatte_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gambatte_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21D7CE91E6C515900002F89 /* gambatte_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gambatte_watchOS.h; sourceTree = "<group>"; };
 		B21D7CEA1E6C515900002F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 			children = (
 				B2DC85201E5DC6CC00CC1028 /* LibraryController.swift */,
 				B2FC9BDD1E608AD5004D19C0 /* GameplayController.swift */,
+				B21806EC1E8ABF5700567184 /* GameScene.swift */,
 				B21E0C021E6EF04E009DAA84 /* GameInputAdditions.swift */,
 				B2DF6DD21E61C3D3001A811B /* Game.swift */,
 				B21D7CF81E6C527100002F89 /* GameCoreSnapshots.swift */,
@@ -955,14 +958,17 @@
 					};
 					B2DC84F91E5DC6CB00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 					B2DC850B1E5DC6CC00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 					B2DC851A1E5DC6CC00CC1028 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = USYSB33394;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1100,6 +1106,7 @@
 				B2C73C981E629602004B1B5F /* GameLoader.swift in Sources */,
 				B2DC85231E5DC6CC00CC1028 /* ExtensionDelegate.swift in Sources */,
 				B2C73C971E629602004B1B5F /* Game.swift in Sources */,
+				B21806ED1E8ABF5700567184 /* GameScene.swift in Sources */,
 				B2FC9BDE1E608AD5004D19C0 /* GameplayController.swift in Sources */,
 				B21E0C031E6EF04E009DAA84 /* GameInputAdditions.swift in Sources */,
 				B2DF6DA01E614C69001A811B /* GameRow.swift in Sources */,
@@ -1313,7 +1320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1335,7 +1342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "giovanni WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1359,7 +1366,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				IBSC_MODULE = giovanni_WatchKit_Extension;
 				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1379,7 +1386,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				IBSC_MODULE = giovanni_WatchKit_Extension;
 				INFOPLIST_FILE = giovanni_watchOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1397,7 +1404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;
@@ -1411,7 +1418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USYSB33394;
 				INFOPLIST_FILE = giovanni_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrieloc.giovanni;

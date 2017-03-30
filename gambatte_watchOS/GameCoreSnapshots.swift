@@ -35,71 +35,68 @@ import CoreGraphics
 import Gambatte_watchOS
 import SpriteKit
 
-extension GameplayController {
-	
-	static let colorSpace = CGColorSpaceCreateDeviceRGB()
-	static let screenWidth = Int(kScreenWidth)
-	static let screenHeight = Int(kScreenHeight)
-	
-	public func createSnapshot(from buffer: UnsafeMutablePointer<UInt32>) -> UIImage? {
-		
-		guard
-			let bitmapContext = CGContext(
-				data: UnsafeMutableRawPointer(buffer),
-				width: GameplayController.screenWidth,
-				height: GameplayController.screenHeight,
-				bitsPerComponent: 8,
-				bytesPerRow: MemoryLayout<UInt32>.size * GameplayController.screenWidth,
-				space: GameplayController.colorSpace,
-				bitmapInfo: CGImageByteOrderInfo.order32Little.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue),
-			
-			let cgImage = bitmapContext.makeImage()
-			
-			else {
-				return nil
-		}
-		return UIImage(cgImage: cgImage)
-	}
-	
-	public func createTexture(from buffer: UnsafeMutablePointer<UInt32>) -> SKTexture {
-		
-		let size = CGSize(width: GameplayController.screenWidth,
-		                  height: GameplayController.screenHeight)
-		let data = createData(from: buffer)
-		let texture = SKTexture(data: data, size: size, flipped: true)
-		texture.filteringMode = .nearest
-		return texture
-	}
-	
-	fileprivate func createData(from buffer: UnsafeMutablePointer<UInt32>) -> Data {
-		
-		let count = Int(kScreenHeight * kScreenWidth) * MemoryLayout<UInt32>.size
-		let bufferPointer =  UnsafeBufferPointer(start: buffer, count: count)
-		let data = Data(buffer: bufferPointer)
-		
-		var bytes = [UInt8](repeating: 0, count: count)
-		data.copyBytes(to: &bytes, count: count)
 
-		return data
-	}
+let colorSpace = CGColorSpaceCreateDeviceRGB()
+let screenWidth = Int(kScreenWidth)
+let screenHeight = Int(kScreenHeight)
 
-	// Use this for debugging. Will output a file to the app's documents directory.
+public func createSnapshot(from buffer: UnsafeMutablePointer<UInt32>) -> UIImage? {
 	
-	func logBuffer(_ buffer: UnsafeMutablePointer<UInt32>) {
+	guard
+		let bitmapContext = CGContext(
+			data: UnsafeMutableRawPointer(buffer),
+			width: screenWidth,
+			height: screenHeight,
+			bitsPerComponent: 8,
+			bytesPerRow: MemoryLayout<UInt32>.size * screenWidth,
+			space: colorSpace,
+			bitmapInfo: CGImageByteOrderInfo.order32Little.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue),
 		
-		let data = createData(from: buffer)
-		let count = data.count
-		var bytes = [UInt8](repeating: 0, count: count)
-		data.copyBytes(to: &bytes, count: count)
+		let cgImage = bitmapContext.makeImage()
 		
-		let formatter = DateFormatter()
-		formatter.dateStyle = .full
-		let url = GameLoader.shared.cacheURL!.appendingPathComponent(formatter.string(from: Date()))
-		
-		do {
-			try data.write(to: url)
-		} catch {
-		}
-		print("Wrote data to \(url)")
+		else {
+			return nil
 	}
+	return UIImage(cgImage: cgImage)
+}
+
+public func createTexture(from buffer: UnsafeMutablePointer<UInt32>) -> SKTexture {
+	
+	let size = CGSize(width: screenWidth, height: screenHeight)
+	let data = createData(from: buffer)
+	let texture = SKTexture(data: data, size: size, flipped: true)
+	texture.filteringMode = .nearest
+	return texture
+}
+
+fileprivate func createData(from buffer: UnsafeMutablePointer<UInt32>) -> Data {
+	
+	let count = Int(kScreenHeight * kScreenWidth) * MemoryLayout<UInt32>.size
+	let bufferPointer = UnsafeBufferPointer(start: buffer, count: count)
+	let data = Data(buffer: bufferPointer)
+	
+//	var bytes = [UInt8](repeating: 0, count: count)
+//	data.copyBytes(to: &bytes, count: count)
+
+	return data
+}
+
+// Use this for debugging. Will output a file to the app's documents directory.
+
+func logBuffer(_ buffer: UnsafeMutablePointer<UInt32>) {
+	
+	let data = createData(from: buffer)
+	let count = data.count
+	var bytes = [UInt8](repeating: 0, count: count)
+	data.copyBytes(to: &bytes, count: count)
+	
+	let formatter = DateFormatter()
+	formatter.dateStyle = .full
+	let url = GameLoader.shared.cacheURL!.appendingPathComponent(formatter.string(from: Date()))
+	
+	do {
+		try data.write(to: url)
+	} catch {
+	}
+	print("Wrote data to \(url)")
 }
