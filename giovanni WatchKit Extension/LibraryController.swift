@@ -55,6 +55,14 @@ class LibraryController: WKInterfaceController {
 		
 		reloadGames()
 	}
+
+	override func didAppear() {
+		super.didAppear()
+
+		if GameLoader.shared.core != nil {
+			GameLoader.shared.core = nil
+		}
+	}
 	
 	override func willActivate() {
 		super.willActivate()

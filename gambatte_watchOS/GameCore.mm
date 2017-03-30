@@ -107,6 +107,10 @@ public:
 	OESetThreadRealtime(1. / (1. * frameInterval), .007, .03);
 	
 	while (!gameCoreThread.isCancelled) { @autoreleasepool {
+		if (!gameCoreThread) {
+			return;
+		}
+
 		size_t samples = 2064;
 
 		while (gb.runFor((gambatte::uint_least32_t *)videoBuffer, kScreenWidth,
@@ -140,13 +144,15 @@ public:
 	}
 	
 	gb.saveSavedata();
-	free(videoBuffer);
-	free(unusedBuffer);
-
-	//	[updateTimer invalidate];
 	_paused = YES;
 	[gameCoreThread cancel];
 	gameCoreThread = nil;
+
+	free(videoBuffer);
+	free(unusedBuffer);
+
+	videoBuffer = nil;
+	unusedBuffer = nil;
 }
 
 - (void)resetEmulation
@@ -154,6 +160,11 @@ public:
 	[self stopEmulation];
 	gb.reset();
 	[self startEmulation];
+}
+
+- (void)saveSavedata
+{
+	gb.saveSavedata();
 }
 
 #pragma mark - Input
