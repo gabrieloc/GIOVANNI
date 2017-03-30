@@ -32,6 +32,7 @@
 //
 
 import WatchKit
+import SpriteKit
 import Gambatte_watchOS
 
 extension CGPoint {
@@ -41,7 +42,8 @@ extension CGPoint {
 }
 
 class GameplayController: WKInterfaceController {
-	@IBOutlet var image: WKInterfaceImage!
+	@IBOutlet var scene: WKInterfaceSKScene!
+	let spriteNode = SKSpriteNode(imageNamed: "loading")
 	
 	var panOrigin: CGPoint?
 	let deadzone: CGFloat = 1
@@ -83,6 +85,22 @@ class GameplayController: WKInterfaceController {
 	@IBAction func selectSelected() { pressInputOnce(.select) }
 	@IBAction func BSelected()		{ pressInputOnce(.B) }
 	
+	@IBAction func loadSelected() {
+		guard let core = loader.core else {
+			return
+		}
+		core.resetEmulation()
+		core.load(fromSlot: 0)
+	}
+
+	@IBAction func saveSelected() {
+		guard let core = loader.core else {
+			return
+		}
+		core.resetEmulation()
+		loader.core?.save(toSlot: 0)
+	}
+
 	@IBAction func resetSelected() {
 		loader.core?.resetEmulation()
 	}
@@ -128,7 +146,7 @@ class GameplayController: WKInterfaceController {
 	let loader = GameLoader.shared
 	
 	var tick = 0
-	let refreshRate = 20;
+	let refreshRate = 5;
 	
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
@@ -137,6 +155,16 @@ class GameplayController: WKInterfaceController {
 			pop()
 			return
 		}
+		
+		var size = contentFrame.size
+		size.height *= 0.8
+		let scene = SKScene(size: size)
+
+		spriteNode.size = size
+		spriteNode.position = CGPoint(x: size.width * 0.5,
+		                              y: size.height * 0.5)
+		scene.addChild(spriteNode)
+		self.scene.presentScene(scene)
 		
 		let success: ((GameCore) -> Void) = { [unowned self] (core) in
 			core.didRender = { [weak self] buffer in
@@ -169,10 +197,10 @@ class GameplayController: WKInterfaceController {
 		crownSequencer.delegate = self
 		crownSequencer.focus()
 
-		if let core = loader.core {
-			core.load(fromSlot: 0)
-//			core.paused = false
-		}
+		// Too buggy
+//		if let core = loader.core, core.isLoaded {
+//			core.load(fromSlot: 0)
+//		}
 	}
 	
 	override func didDeactivate() {
@@ -180,11 +208,13 @@ class GameplayController: WKInterfaceController {
 		
 		crownSequencer.delegate = nil
 		crownSequencer.resignFocus()
+
+		loader.core?.saveSavedata()
 		
-		if let core = loader.core {
-			core.save(toSlot: 0)
-//			core.paused = true;
-		}
+		// Too buggy
+//		if let core = loader.core, core.isLoaded {
+//			core.save(toSlot: 0)
+//		}
 	}
 
 	var lastSnapshot: UIImage?
@@ -192,21 +222,15 @@ class GameplayController: WKInterfaceController {
 	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
 		
 		tick += 1
-		if tick > refreshRate || loader.core == nil {
+		if tick < refreshRate || loader.core == nil {
 			return
 		}
-		
-		let snapshot = loader.core!.createSnapshot(from: buffer)
-		
-		// compare before updating. Not sure if faster.
-//		if let lhs = lastSnapshot, let rhs = snapshot, lhs.equalPixels(to: rhs) {
-//			return
-//		}
-//		lastSnapshot = snapshot
-		
-		DispatchQueue.main.async {
-			self.image.setImage(snapshot)
+
+		let texture = createTexture(from: buffer)
+		texture.preload {
+			self.spriteNode.texture = texture
 		}
+
 		tick = 0
 	}
 	
