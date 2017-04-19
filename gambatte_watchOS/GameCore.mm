@@ -169,9 +169,9 @@ public:
 
 - (void)runWhilePaused:(void (^)())block
 {
-  self.paused = true;
-  block();
-  self.paused = false;
+	self.paused = true;
+	block();
+	self.paused = false;
 }
 
 #pragma mark - Input
