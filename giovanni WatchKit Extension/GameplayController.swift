@@ -84,21 +84,15 @@ class GameplayController: WKInterfaceController {
 	@IBAction func startSelected()	{ pressInputOnce(.start) }
 	@IBAction func selectSelected() { pressInputOnce(.select) }
 	@IBAction func BSelected()		{ pressInputOnce(.B) }
-	
+
 	@IBAction func loadSelected() {
-		guard let core = loader.core else {
-			return
-		}
-		core.resetEmulation()
-		core.load(fromSlot: 0)
+    guard let core = loader.core else { return }
+    core.runWhilePaused({ core.load(fromSlot: 0) })
 	}
 
 	@IBAction func saveSelected() {
-		guard let core = loader.core else {
-			return
-		}
-		core.resetEmulation()
-		loader.core?.save(toSlot: 0)
+    guard let core = loader.core else { return }
+    core.runWhilePaused({ core.save(toSlot: 0) })
 	}
 
 	@IBAction func resetSelected() {
@@ -155,6 +149,9 @@ class GameplayController: WKInterfaceController {
 			pop()
 			return
 		}
+
+    crownSequencer.delegate = self
+    crownSequencer.focus()
 		
 		var size = contentFrame.size
 		size.height *= 0.8
@@ -193,28 +190,13 @@ class GameplayController: WKInterfaceController {
 	
 	override func willActivate() {
 		super.willActivate()
-		
-		crownSequencer.delegate = self
-		crownSequencer.focus()
-
-		// Too buggy
-//		if let core = loader.core, core.isLoaded {
-//			core.load(fromSlot: 0)
-//		}
+    loadSelected()
 	}
 	
 	override func didDeactivate() {
 		super.didDeactivate()
-		
-		crownSequencer.delegate = nil
-		crownSequencer.resignFocus()
-
 		loader.core?.saveSavedata()
-		
-		// Too buggy
-//		if let core = loader.core, core.isLoaded {
-//			core.save(toSlot: 0)
-//		}
+    saveSelected()
 	}
 
 	var lastSnapshot: UIImage?

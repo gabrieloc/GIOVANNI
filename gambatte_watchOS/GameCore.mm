@@ -167,6 +167,13 @@ public:
 	gb.saveSavedata();
 }
 
+- (void)runWhilePaused:(void (^)())block
+{
+  self.paused = true;
+  block();
+  self.paused = false;
+}
+
 #pragma mark - Input
 
 - (oneway void)updateInput:(GameInput)input selected:(BOOL)selected
