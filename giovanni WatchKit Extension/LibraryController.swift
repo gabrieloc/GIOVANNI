@@ -146,13 +146,8 @@ class LibraryController: WKInterfaceController {
 			row.titleLabel.setText(game.name)
 		}
 	}
-	
-	func presentGame(_ game: Game) {
-		pushController(withName: "GamePlay", context: game)
-	}
-	
-	override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-		let game = games![rowIndex - 1]
-		presentGame(game)
+
+	override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+		return games![rowIndex - 1]
 	}
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7hZ-R3-GZe">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
@@ -91,7 +91,7 @@ SL</string>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="286" y="276"/>
+            <point key="canvasLocation" x="326" y="268"/>
         </scene>
         <!--Library Controller-->
         <scene sceneID="hYo-3W-FtS">
@@ -139,6 +139,7 @@ SL</string>
                                     </group>
                                     <connections>
                                         <outlet property="titleLabel" destination="NDJ-HY-IOo" id="C04-0a-hT1"/>
+                                        <segue destination="AgC-eL-Hgc" kind="modal" id="Jr0-Lf-gGe"/>
                                     </connections>
                                 </tableRow>
                             </items>
