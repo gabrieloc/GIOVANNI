@@ -190,13 +190,13 @@ class GameplayController: WKInterfaceController {
 
 	override func willActivate() {
 		super.willActivate()
-		loadSelected()
+//		loadSelected()
 	}
 
 	override func didDeactivate() {
 		super.didDeactivate()
 		loader.core?.saveSavedata()
-		saveSelected()
+//		saveSelected()
 	}
 
 	var lastSnapshot: UIImage?
