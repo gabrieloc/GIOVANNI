@@ -44,18 +44,18 @@ extension CGPoint {
 class GameplayController: WKInterfaceController {
 	@IBOutlet var scene: WKInterfaceSKScene!
 	let spriteNode = SKSpriteNode(imageNamed: "loading")
-	
+
 	var panOrigin: CGPoint?
 	let deadzone: CGFloat = 1
-	
+
 	@IBAction func tapUpdated(_ sender: WKTapGestureRecognizer) {
 		pressInputOnce(.A)
 	}
-	
+
 	@IBAction func panUpdated(_ sender: WKPanGestureRecognizer) {
-		
+
 		let direction = sender.translationInObject()
-		
+
 		switch sender.state {
 		case .began:
 			panOrigin = direction
@@ -65,11 +65,11 @@ class GameplayController: WKInterfaceController {
 			}
 			let panOrigin = self.panOrigin!
 			let delta = direction - panOrigin
-			
+
 			if delta == .zero {
 				return
 			}
-			
+
 			if abs(delta.x) > abs(delta.y) {
 				toggleInput = delta.x.sign == .plus ? .right : .left
 			} else {
@@ -84,78 +84,75 @@ class GameplayController: WKInterfaceController {
 	@IBAction func startSelected()	{ pressInputOnce(.start) }
 	@IBAction func selectSelected() { pressInputOnce(.select) }
 	@IBAction func BSelected()		{ pressInputOnce(.B) }
-	
+
 	@IBAction func loadSelected() {
-		guard let core = loader.core else {
-			return
-		}
-		core.resetEmulation()
-		core.load(fromSlot: 0)
+		guard let core = loader.core else { return }
+		core.runWhilePaused({ core.load(fromSlot: 0) })
 	}
 
 	@IBAction func saveSelected() {
-		guard let core = loader.core else {
-			return
-		}
-		core.resetEmulation()
-		loader.core?.save(toSlot: 0)
+		guard let core = loader.core else { return }
+		core.runWhilePaused({ core.save(toSlot: 0) })
 	}
 
 	@IBAction func resetSelected() {
 		loader.core?.resetEmulation()
 	}
-	
+
 	@IBOutlet var ALabel: WKInterfaceLabel!
 	@IBOutlet var DPadLabel: WKInterfaceLabel!
-	
+
 	var imageCache = NSCache<NSString, UIImage>()
-	
+
 	func updateDirectionalInputs() {
 
 		guard let core = loader.core else {
 			DPadLabel.setText(GameInput(rawValue: 0).displaySymbol)
 			return
 		}
-		
+
 		let input = core.activeInput.pointee
 		let directionInput = GameInput(rawValue: Int(input))
 
 		// This takes up too much cpu :(
-//		let image = inputImage(for: directionInput)
-//		dpadImage.setImage(image)
-		
+		//		let image = inputImage(for: directionInput)
+		//		dpadImage.setImage(image)
+
 		// This is a far cheaper alternative
 		let text = directionInput.displaySymbol
 		DPadLabel.setText(text)
 	}
-	
+
 	func inputImage(for input: GameInput) -> UIImage? {
-		
+
 		let key = NSString(string: "Dpad-\(input.rawValue)")
 		if let image = imageCache.object(forKey: key) {
 			return image
 		}
-		
+
 		guard let image = UIImage.dpadImage(for: input) else {
 			return nil
 		}
 		imageCache.setObject(image, forKey: key)
 		return image
 	}
-	
+
 	let loader = GameLoader.shared
-	
+
 	var tick = 0
 	let refreshRate = 5;
-	
+
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
-		
+
 		guard let game = context as? Game else {
 			pop()
 			return
 		}
-		
+
+		crownSequencer.delegate = self
+		crownSequencer.focus()
+
 		var size = contentFrame.size
 		size.height *= 0.8
 		let scene = SKScene(size: size)
@@ -165,7 +162,7 @@ class GameplayController: WKInterfaceController {
 		                              y: size.height * 0.5)
 		scene.addChild(spriteNode)
 		self.scene.presentScene(scene)
-		
+
 		let success: ((GameCore) -> Void) = { [unowned self] (core) in
 			core.didRender = { [weak self] buffer in
 				guard let s = self else {
@@ -174,7 +171,7 @@ class GameplayController: WKInterfaceController {
 				s.updateSnapshotIfNeeded(with: buffer)
 			}
 		}
-		
+
 		let failureHandler: ((Error) -> Void) = { [unowned self] (error) in
 			print("error loading game \(error)")
 			self.presentAlert(withTitle: "There was an issue loading this game", message: nil, preferredStyle: .alert, actions: [
@@ -183,44 +180,29 @@ class GameplayController: WKInterfaceController {
 				})
 				])
 		}
-		
+
 		loader.loadGame(game, success, failure: failureHandler)
-		
+
 		(GameInput.directionalInputs + [GameInput.A]).forEach {
 			self.setInputSelected($0, selected: false)
 		}
 	}
-	
+
 	override func willActivate() {
 		super.willActivate()
-		
-		crownSequencer.delegate = self
-		crownSequencer.focus()
-
-		// Too buggy
-//		if let core = loader.core, core.isLoaded {
-//			core.load(fromSlot: 0)
-//		}
+//		loadSelected()
 	}
-	
+
 	override func didDeactivate() {
 		super.didDeactivate()
-		
-		crownSequencer.delegate = nil
-		crownSequencer.resignFocus()
-
 		loader.core?.saveSavedata()
-		
-		// Too buggy
-//		if let core = loader.core, core.isLoaded {
-//			core.save(toSlot: 0)
-//		}
+//		saveSelected()
 	}
 
 	var lastSnapshot: UIImage?
-	
+
 	func updateSnapshotIfNeeded(with buffer: UnsafeMutablePointer<UInt32>) {
-		
+
 		tick += 1
 		if tick < refreshRate || loader.core == nil {
 			return
@@ -233,11 +215,11 @@ class GameplayController: WKInterfaceController {
 
 		tick = 0
 	}
-	
+
 	// MARK: Input
-	
+
 	var toggleInput: GameInput? {
-		
+
 		didSet {
 			if let oldInput = oldValue {
 				setInputSelected(oldInput, selected: false)
@@ -247,13 +229,13 @@ class GameplayController: WKInterfaceController {
 			}
 		}
 	}
-	
+
 	func setInputSelected(_ input: GameInput, selected: Bool) {
-		
+
 		if let core = loader.core {
 			core.update(input, selected: selected)
 		}
-		
+
 		if input.isDirectional {
 			updateDirectionalInputs()
 		} else if input == .A {
@@ -261,9 +243,9 @@ class GameplayController: WKInterfaceController {
 			ALabel.setAlpha(alpha)
 		}
 	}
-	
+
 	var inputTimers = [GameInput: Timer]()
-	
+
 	func pressInputOnce(_ input: GameInput) {
 		setInputSelected(input, selected: true)
 		if let timer = inputTimers.first(where: { $0.key == input })?.value {
@@ -278,11 +260,11 @@ class GameplayController: WKInterfaceController {
 }
 
 extension GameplayController: WKCrownDelegate {
-	
+
 	func crownDidBecomeIdle(_ crownSequencer: WKCrownSequencer?) {
 		toggleInput = nil
 	}
-	
+
 	func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
 		if rotationalDelta == 0 {
 			return

@@ -72,6 +72,8 @@ static int const kScreenHeight = 144;
 - (void)saveToSlot:(NSInteger)slot;
 - (void)saveSavedata;
 
+- (void)runWhilePaused:(void (^)())block;
+
 @end
 
 NS_ASSUME_NONNULL_END
