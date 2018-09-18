@@ -13,6 +13,12 @@ Giovanni uses git submodules for it's one dependency, a modified version of the 
 $ git clone --recursive git@github.com:gabrieloc/GIOVANNI.git
 ```
 
+To run on your device:
+1. Make sure you have an Apple developer account
+2. Select your development team under the `Signing` area for each target (`giovanni_iOS`, `giovanni_watchOS`, `giovanni WatchKit Extension`, and `Gambatte_watchOS`)
+3. Change the `Bundle Identifier` for each of the above targets to something unique. For example, `giovanni_iOS` uses `com.gabrieloc.giovanni`, so change that to something like `com.YOUR_USERNAME.giovanni`.
+4. Select the `giovanni` scheme in the top left corner with your device selected and run.
+
 If you are still having issues, please following the tutorial provided by [Redmond Pie](http://www.redmondpie.com/install-giovanni-game-boy-emulator-on-apple-watch-heres-how-tutorial/)
 
 ## Usage
