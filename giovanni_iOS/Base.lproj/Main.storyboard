@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red" translatesAutoresizingMaskIntoConstraints="NO" id="QjX-7U-bp7">
-                                <rect key="frame" x="0.0" y="0.0" width="319" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="to1-g3-ng1">
                                 <rect key="frame" x="0.0" y="516" width="320" height="52"/>
@@ -48,7 +48,7 @@
                         <constraints>
                             <constraint firstItem="to1-g3-ng1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="59n-If-k0z"/>
                             <constraint firstItem="QjX-7U-bp7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9Fb-HI-OpI"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="to1-g3-ng1" secondAttribute="bottom" id="DLq-eZ-DI7"/>
+                            <constraint firstAttribute="bottom" secondItem="to1-g3-ng1" secondAttribute="bottom" id="DLq-eZ-DI7"/>
                             <constraint firstItem="Lb4-lM-q9q" firstAttribute="top" secondItem="GtW-Cx-q2X" secondAttribute="bottom" priority="999" id="DMp-cW-qwW"/>
                             <constraint firstItem="to1-g3-ng1" firstAttribute="top" secondItem="GtW-Cx-q2X" secondAttribute="bottom" id="FNv-rD-krE"/>
                             <constraint firstItem="to1-g3-ng1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gzf-Wj-oe2"/>

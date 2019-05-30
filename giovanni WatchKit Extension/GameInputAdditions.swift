@@ -64,7 +64,7 @@ extension GameInput: Hashable {
 extension UIImage {
 	
 	func equalPixels(to image: UIImage) -> Bool {
-		return UIImagePNGRepresentation(self) == UIImagePNGRepresentation(image)
+    return self.pngData() == image.pngData()
 	}
 	
 	static func dpadImage(for direction: GameInput) -> UIImage? {

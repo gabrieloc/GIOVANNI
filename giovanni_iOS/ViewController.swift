@@ -75,11 +75,10 @@ class ViewController: UIViewController {
 	}
 	
 	func encodeFiles(with URLs: [URL]) -> [[String: String]] {
-		return URLs.filter { $0.pathExtension.isValidROMExtension }.reduce([[String: String]]()) {
-			
-			var games = $0.0
-
-			let path = $0.1
+    return URLs.reduce(into: [[String: String]]()) { (games, path) in
+      guard path.pathExtension.isValidROMExtension else {
+        return
+      }
 
 			let name = path
 				.lastPathComponent
@@ -92,7 +91,6 @@ class ViewController: UIViewController {
 				"path": path.absoluteString
 			]
 			games.append(game)
-			return games
 		}
 	}
 }
@@ -100,8 +98,8 @@ class ViewController: UIViewController {
 extension ViewController: WCSessionDelegate {
 
 	func prepareSession() {
-		
-		let session = WCSession.default()
+
+		let session = WCSession.default
 		session.delegate = self
 		if session.activationState != .activated {
 			session.activate()
@@ -146,10 +144,10 @@ extension ViewController: WCSessionDelegate {
 			return
 		}
 		
-		if WCSession.default().activationState != .activated {
+		if WCSession.default.activationState != .activated {
 			prepareSession()
 		}
 		
-		WCSession.default().sendMessage(["games": games], replyHandler: nil, errorHandler: nil)
+		WCSession.default.sendMessage(["games": games], replyHandler: nil, errorHandler: nil)
 	}
 }
