@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,7 @@
                         <constraints>
                             <constraint firstItem="lab-6P-DJ0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Aay-NJ-m1k"/>
                             <constraint firstItem="qdb-GU-r5C" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Bjb-NE-szD"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hB4-Wd-O3g" secondAttribute="bottom" id="JZm-CR-L6S"/>
+                            <constraint firstAttribute="bottom" secondItem="hB4-Wd-O3g" secondAttribute="bottom" id="JZm-CR-L6S"/>
                             <constraint firstItem="4I6-X5-aJY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PpC-yj-ygp"/>
                             <constraint firstItem="qdb-GU-r5C" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="SbE-qD-qj1"/>
                             <constraint firstItem="qdb-GU-r5C" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="a8f-Gt-WNE"/>
